@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggtheme.R
 \name{default_theme}
 \alias{default_theme}
-\title{Standard theme for plots}
+\title{Standard ggtheme for plots}
 \usage{
 default_theme(base_size = 14, base_family = "Helvetica")
 }
@@ -15,5 +15,5 @@ default_theme(base_size = 14, base_family = "Helvetica")
 ggplot2 theme
 }
 \description{
-Standard theme for plots
+Standard ggtheme for plots
 }

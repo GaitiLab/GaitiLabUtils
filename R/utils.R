@@ -1,5 +1,4 @@
-#' Extract name from filepath
-#'
+#' @title Extract name from filepath
 #' @param filepath filepath
 #' @return name of file without extension
 #'
@@ -12,7 +11,7 @@ get_name <- function(filepath) {
     return(file_path_sans_ext(path_file(filepath)))
 }
 
-#' Create directory
+#' @title Create directory
 #'
 #' @description Create directory if it does not exist
 #'
@@ -30,7 +29,7 @@ create_dir <- function(dir_path) {
     }
 }
 
-#' Obtain current date
+#' @title Obtain current date
 #' @description Obtain current date in format YYYYMMDD
 #' @return current date
 #' @export
@@ -107,4 +106,17 @@ merge_dfs <- function(list_of_dfs, by, all.x = TRUE) {
         function(dtf1, dtf2) merge(dtf1, dtf2, by = by, all.x = all.x),
         list_of_dfs
     )
+}
+#' @title Combine p-values
+#' @description Combine p-values using Fisher's method
+#' @param p_values vector of p-values
+#' @return combined p-value
+#' @export
+#' @importFrom metap sumlog
+get_p <- function(x) {
+    if (length(x) > 1) {
+        return(sumlog(x)$p)
+    } else {
+        return(x)
+    }
 }

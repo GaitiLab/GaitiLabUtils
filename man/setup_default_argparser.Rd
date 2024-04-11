@@ -2,7 +2,7 @@
 % Please edit documentation in R/init_scripts.R
 \name{setup_default_argparser}
 \alias{setup_default_argparser}
-\title{Setup default argparser}
+\title{initialize argparser}
 \usage{
 setup_default_argparser(description = "", default_output = "output")
 }
@@ -15,6 +15,9 @@ setup_default_argparser(description = "", default_output = "output")
 parser object
 }
 \description{
+Setup default argparser
+}
+\details{
 Set up a default argument parser, with two default arguments: log_level and output_dir
 }
 \examples{

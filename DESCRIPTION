@@ -1,5 +1,5 @@
-Package: GBMutils
-Title: Helper functions used in the GBM project in the Gaiti Lab
+Package: GaitiLabUtils
+Title: General utility functions for R-projects. 
 Version: 0.0.0.9000
 Authors@R:
     person("Joan", "Kant", email = "Joan.Kant@uhn.ca", role = c("cre"),
@@ -16,7 +16,6 @@ Imports:
     ggplot2,
     ggthemes,
     grid,
-    RobustRankAggreg,
     argparse,
     dplyr,
     fs,

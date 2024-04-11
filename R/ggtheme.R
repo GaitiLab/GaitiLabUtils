@@ -1,4 +1,4 @@
-#' Standard theme for plots
+#' @title Standard ggtheme for plots
 #' @param base_size Base font size
 #' @param base_family Base font family
 #' @return ggplot2 theme

@@ -11,7 +11,7 @@ set_wd <- function() {
 #' Setup default argparser
 #'
 #' Set up a default argument parser, with two default arguments: log_level and output_dir
-#'
+#' @title initialize argparser
 #' @param description Description for script
 #' @param output_default Default output directory
 #' @return parser object
@@ -65,7 +65,7 @@ init_logging <- function(log_level, log_file = NULL) {
   ))
 }
 
-#' Logging functions: log_info
+#' @title Logging functions: log_info
 #'
 #' @param logr logger object
 #' @param ... message
@@ -77,7 +77,7 @@ log_info <- function(...) {
   log4r::info(logr, paste0(...))
 }
 
-#' Logging functions: log_error
+#' @title Logging functions: log_error
 #'
 #' @param logr logger object
 #' @param ... message
@@ -89,7 +89,7 @@ log_error <- function(...) {
   log4r::error(logr, paste0(...))
 }
 
-#' Logging functions: log_fatal
+#' @title Logging functions: log_fatal
 #'
 #' @param logr logger object
 #' @param ... message
@@ -101,7 +101,7 @@ log_fatal <- function(...) {
   log4r::fatal(logr, paste0(...))
 }
 
-#' Logging functions: log_debug
+#' @title Logging functions: log_debug
 #'
 #' @param logr logger object
 #' @param ... message
@@ -113,7 +113,7 @@ log_debug <- function(...) {
   log4r::debug(logr, paste0(...))
 }
 
-#' Logging functions: log.warn
+#' @title Logging functions: log.warn
 #'
 #' @param logr logging object
 #' @param ... message
