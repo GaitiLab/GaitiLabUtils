@@ -24,5 +24,4 @@ Imports:
     metap,
     tibble,
     tidyr,
-    tools,
-    Seurat
+    tools
