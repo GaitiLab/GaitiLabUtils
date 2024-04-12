@@ -21,7 +21,6 @@ Imports:
     fs,
     glue, 
     log4r,
-    metap,
     tibble,
     tidyr,
     tools

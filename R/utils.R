@@ -107,16 +107,3 @@ merge_dfs <- function(list_of_dfs, by, all.x = TRUE) {
         list_of_dfs
     )
 }
-#' @title Combine p-values
-#' @description Combine p-values using Fisher's method
-#' @param p_values vector of p-values
-#' @return combined p-value
-#' @export
-#' @importFrom metap sumlog
-get_p <- function(x) {
-    if (length(x) > 1) {
-        return(sumlog(x)$p)
-    } else {
-        return(x)
-    }
-}
