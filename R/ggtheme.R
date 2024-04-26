@@ -6,22 +6,23 @@
 #' @import ggplot2
 #' @import ggthemes
 #' @import grid
+#' @import ggtext
 
 default_theme <- function(base_size = 14, base_family = "Helvetica") {
     (theme_foundation(base_size = base_size, base_family = base_family)
     + theme(
-            plot.title = element_text(
+            plot.title = element_markdown(
                 face = "bold",
                 size = rel(1.2), hjust = 0.5
             ),
-            text = element_text(),
+            text = element_markdown(),
             panel.background = element_rect(colour = NA),
             plot.background = element_rect(colour = NA),
             panel.border = element_rect(colour = NA),
-            axis.title = element_text(face = "bold", size = rel(1.1)),
-            axis.title.y = element_text(angle = 90, vjust = 2),
-            axis.title.x = element_text(vjust = -0.2),
-            axis.text = element_text(size = rel(1)),
+            axis.title = element_markdown(face = "bold", size = rel(1.1)),
+            axis.title.y = element_markdown(angle = 90, vjust = 2),
+            axis.title.x = element_markdown(vjust = -0.2),
+            axis.text = element_markdown(size = rel(1)),
             axis.line = element_line(colour = "black"),
             axis.ticks = element_line(),
             panel.grid.major = element_blank(),
@@ -31,9 +32,9 @@ default_theme <- function(base_size = 14, base_family = "Helvetica") {
             legend.direction = "horizontal",
             legend.key.size = unit(0.2, "cm"),
             legend.spacing.x = unit(2, "lines"),
-            legend.title = element_text(face = "plain"),
+            legend.title = element_markdown(face = "plain"),
             plot.margin = unit(c(10, 5, 5, 5), "mm"),
             strip.background = element_rect(colour = "#ffffff", fill = "#ffffff"),
-            strip.text = element_text(face = "bold", size = rel(1.1))
+            strip.text = element_markdown(face = "bold", size = rel(1.1))
         ))
 }
