@@ -23,5 +23,5 @@ Imports:
     log4r,
     tibble,
     tidyr,
-    tools
+    tools,
     ggtext
