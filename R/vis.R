@@ -3,7 +3,6 @@
 #' @param hm heatmap or list of heatmaps
 #' @param m margin
 #' @return list of height and width
-#' @export
 #' @importFrom ComplexHeatmap draw component_height component_width
 #' @importFrom grid convertHeight
 get_optimal_output_size <- function(hm, m = 4) {
@@ -19,6 +18,11 @@ get_optimal_output_size <- function(hm, m = 4) {
     return(list(height = ht_height, width = ht_width))
 }
 
+#' @title Determine cell function
+#' @description Determine cell decoration function for use with ComplexHeatmap
+#' @param matrix matrix to use (either the same heatmap used for create_hm() or other matrix (e.g. p-values) with same dimensions)
+#' @param is_upper_tri Only draw upper triangle default = FALSE
+#' @param add_annot add annotations to cells, i.e. values of matrix
 get_cell_function <- function(matrix, is_upper_tri = FALSE, add_annot = TRUE) {
     # Full matrix
     cell_fun_annot <- function(j, i, x, y, width, height, fill) {
@@ -148,12 +152,10 @@ save_hm <- function(
     dev.off()
 }
 
-#' Plot heatmap + save
-#' @param mat matrix
-#' @param col_fun color function
-#' @param output_file output file name
-#' @param legend_title legend title
-#' @param save_plot save plot
+#' @title Create Heatmap using ComplexHeatmap
+#' @param matrix matrix
+#' @param cell_width with of cell in 'mm'
+#' @param cell_height height of cell in 'mm'
 #' @return hm
 #' @export
 #' @importFrom ComplexHeatmap Heatmap draw
