@@ -18,10 +18,12 @@ Imports:
     grid,
     argparse,
     dplyr,
+    plyr,
     fs,
     glue, 
     log4r,
     tibble,
     tidyr,
     tools,
-    ggtext
+    ggtext, 
+    ComplexHeatmap
