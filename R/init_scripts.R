@@ -43,7 +43,7 @@ setup_default_argparser <- function(description = "", default_output = "output")
 #' @examples logr <- init_logging(3)
 #' @export
 #' @importFrom log4r console_appender default_log_layout logger
-init_logging <- function(log_level, log_file = NULL) {
+init_logging <- function(log_level = 5, log_file = NULL) {
   log_level_options <- c(
     `1` = "FATAL", `2` = "ERROR", `3` = "WARN", `4` = "INFO",
     `5` = "DEBUG"
