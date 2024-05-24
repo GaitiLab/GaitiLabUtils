@@ -10,4 +10,5 @@ options(future.globals.maxSize = 8000 * 1024**2)
 if (interactive()) {
     suppressMessages(require(devtools))
 }
+
 source("renv/activate.R")

@@ -13,7 +13,7 @@ Depends:
     R (>= 2.10),
     BiocManager,
     BiocVersion, 
-    cpp11 
+    cpp11,
 LazyData: true
 Imports:
     ggplot2,
@@ -30,7 +30,6 @@ Imports:
     tools,
     ggtext, 
     ComplexHeatmap,
-    BiocManager
 Config/renv/profiles/dev: 
     httpgd,
     languageserver,
@@ -39,6 +38,6 @@ Config/renv/profiles/dev:
     jsonlite,
     styler,
     lintr,
-    rlang,
-    httpgd
+    httpgd,
+    rlang
 
