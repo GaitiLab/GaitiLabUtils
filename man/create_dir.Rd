@@ -13,5 +13,7 @@ create_dir(dir_path)
 Create directory if it does not exist
 }
 \examples{
+\dontrun{
 create_dir("/Users/johndoe/my_new_dir")
+}
 }

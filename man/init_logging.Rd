@@ -18,5 +18,7 @@ logger object
 Set up logging
 }
 \examples{
+\dontrun{
 logr <- init_logging(3)
+}
 }

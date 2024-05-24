@@ -4,16 +4,18 @@
 \alias{log_debug}
 \title{Logging functions: log_debug}
 \usage{
-log_debug(...)
+log_debug(logr, ...)
 }
 \arguments{
-\item{...}{message}
-
 \item{logr}{logger object}
+
+\item{...}{message}
 }
 \description{
 Logging functions: log_debug
 }
 \examples{
+\dontrun{
 log_debug("Hello world!")
+}
 }

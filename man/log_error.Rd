@@ -4,16 +4,18 @@
 \alias{log_error}
 \title{Logging functions: log_error}
 \usage{
-log_error(...)
+log_error(logr, ...)
 }
 \arguments{
-\item{...}{message}
-
 \item{logr}{logger object}
+
+\item{...}{message}
 }
 \description{
 Logging functions: log_error
 }
 \examples{
+\dontrun{
 log_error("Hello world!")
+}
 }

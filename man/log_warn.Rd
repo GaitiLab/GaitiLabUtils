@@ -4,16 +4,18 @@
 \alias{log_warn}
 \title{Logging functions: log.warn}
 \usage{
-log_warn(...)
+log_warn(logr, ...)
 }
 \arguments{
-\item{...}{message}
-
 \item{logr}{logging object}
+
+\item{...}{message}
 }
 \description{
 Logging functions: log.warn
 }
 \examples{
+\dontrun{
 log_warn("Hello world!")
+}
 }

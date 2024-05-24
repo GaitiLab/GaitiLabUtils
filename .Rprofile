@@ -1,4 +1,3 @@
-source("renv/activate.R")
 vscode_init_path <- file.path(Sys.getenv(
     if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"
 ), ".vscode-R", "init.R")
@@ -11,3 +10,4 @@ options(future.globals.maxSize = 8000 * 1024**2)
 if (interactive()) {
     suppressMessages(require(devtools))
 }
+source("renv/activate.R")

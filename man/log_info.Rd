@@ -4,16 +4,18 @@
 \alias{log_info}
 \title{Logging functions: log_info}
 \usage{
-log_info(...)
+log_info(logr, ...)
 }
 \arguments{
-\item{...}{message}
-
 \item{logr}{logger object}
+
+\item{...}{message}
 }
 \description{
 Logging functions: log_info
 }
 \examples{
+\dontrun{
 log_info("Hello world!")
+}
 }

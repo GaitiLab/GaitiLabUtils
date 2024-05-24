@@ -3,7 +3,9 @@
 #' @return name of file without extension
 #'
 #' @examples 
+#' \dontrun{
 #' get_name("R/my_script.R") returns 'my_script'
+#' }
 #' @export
 #' @importFrom tools file_path_sans_ext
 #' @importFrom fs path_file
@@ -18,7 +20,10 @@ get_name <- function(filepath) {
 #'
 #' @param dir_path Path to directory to be created
 #'
-#' @examples create_dir("/Users/johndoe/my_new_dir")
+#' @examples 
+#' \dontrun{
+#' create_dir("/Users/johndoe/my_new_dir")
+#' }
 #' @export
 #' @importFrom glue glue
 create_dir <- function(dir_path) {

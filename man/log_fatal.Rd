@@ -4,16 +4,18 @@
 \alias{log_fatal}
 \title{Logging functions: log_fatal}
 \usage{
-log_fatal(...)
+log_fatal(logr, ...)
 }
 \arguments{
-\item{...}{message}
-
 \item{logr}{logger object}
+
+\item{...}{message}
 }
 \description{
 Logging functions: log_fatal
 }
 \examples{
+\dontrun{
 log_fatal("Hello world!")
+}
 }

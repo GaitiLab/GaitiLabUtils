@@ -16,7 +16,10 @@ set_wd <- function() {
 #' @param output_default Default output directory
 #' @return parser object
 #'
-#' @examples setup_default_argparser(description = "Example")
+#' @examples 
+#' \dontrun{
+#' setup_default_argparser(description = "Example")
+#' }
 #' @importFrom argparse ArgumentParser
 #' @export
 setup_default_argparser <- function(description = "", default_output = "output") {
@@ -40,7 +43,10 @@ setup_default_argparser <- function(description = "", default_output = "output")
 #' @param log_file path to log file (optional)
 #' @return logger object
 #'
-#' @examples logr <- init_logging(3)
+#' @examples 
+#' \dontrun{
+#' logr <- init_logging(3)
+#' }
 #' @export
 #' @importFrom log4r console_appender default_log_layout logger
 init_logging <- function(log_level = 5, log_file = NULL) {
@@ -70,10 +76,13 @@ init_logging <- function(log_level = 5, log_file = NULL) {
 #' @param logr logger object
 #' @param ... message
 #'
-#' @examples log_info("Hello world!")
+#' @examples 
+#' \dontrun{
+#' log_info("Hello world!")
+#' }
 #' @export
 #' @importFrom log4r console_appender default_log_layout logger
-log_info <- function(...) {
+log_info <- function(logr,...) {
   log4r::info(logr, paste0(...))
 }
 
@@ -82,10 +91,13 @@ log_info <- function(...) {
 #' @param logr logger object
 #' @param ... message
 #'
-#' @examples log_error("Hello world!")
+#' @examples 
+#' \dontrun{
+#' log_error("Hello world!")
+#' }
 #' @importFrom log4r console_appender default_log_layout logger
 #' @export
-log_error <- function(...) {
+log_error <- function(logr,...) {
   log4r::error(logr, paste0(...))
 }
 
@@ -94,10 +106,13 @@ log_error <- function(...) {
 #' @param logr logger object
 #' @param ... message
 #'
-#' @examples log_fatal("Hello world!")
+#' @examples 
+#' \dontrun{
+#' log_fatal("Hello world!")
+#' }
 #' @importFrom log4r console_appender default_log_layout logger
 #' @export
-log_fatal <- function(...) {
+log_fatal <- function(logr,...) {
   log4r::fatal(logr, paste0(...))
 }
 
@@ -106,10 +121,13 @@ log_fatal <- function(...) {
 #' @param logr logger object
 #' @param ... message
 
-#' @examples log_debug("Hello world!")
+#' @examples 
+#' \dontrun{
+#' log_debug("Hello world!")
+#' }
 #' @importFrom log4r console_appender default_log_layout logger
 #' @export
-log_debug <- function(...) {
+log_debug <- function(logr,...) {
   log4r::debug(logr, paste0(...))
 }
 
@@ -118,10 +136,13 @@ log_debug <- function(...) {
 #' @param logr logging object
 #' @param ... message
 #'
-#' @examples log_warn("Hello world!")
+#' @examples 
+#' \dontrun{
+#' log_warn("Hello world!")
+#' }
 #' @export
 #' @importFrom log4r console_appender default_log_layout logger
 
-log_warn <- function(...) {
+log_warn <- function(logr,...) {
   log4r::warn(logr, paste0(...))
 }

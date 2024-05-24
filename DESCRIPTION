@@ -10,7 +10,10 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Depends: 
-    R (>= 2.10)
+    R (>= 2.10),
+    BiocManager,
+    BiocVersion, 
+    cpp11 
 LazyData: true
 Imports:
     ggplot2,
@@ -26,4 +29,16 @@ Imports:
     tidyr,
     tools,
     ggtext, 
-    ComplexHeatmap
+    ComplexHeatmap,
+    BiocManager
+Config/renv/profiles/dev: 
+    httpgd,
+    languageserver,
+    devtools,
+    usethis,
+    jsonlite,
+    styler,
+    lintr,
+    rlang,
+    httpgd
+

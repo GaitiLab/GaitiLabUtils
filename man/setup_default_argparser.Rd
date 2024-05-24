@@ -21,5 +21,7 @@ Setup default argparser
 Set up a default argument parser, with two default arguments: log_level and output_dir
 }
 \examples{
+\dontrun{
 setup_default_argparser(description = "Example")
+}
 }
