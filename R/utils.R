@@ -2,7 +2,8 @@
 #' @param filepath filepath
 #' @return name of file without extension
 #'
-#' @examples examples get_name("R/my_script.R") returns 'my_script'
+#' @examples 
+#' get_name("R/my_script.R") returns 'my_script'
 #' @export
 #' @importFrom tools file_path_sans_ext
 #' @importFrom fs path_file

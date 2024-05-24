@@ -4,7 +4,7 @@
 \alias{init_logging}
 \title{Set up logging}
 \usage{
-init_logging(log_level, log_file = NULL)
+init_logging(log_level = 5, log_file = NULL)
 }
 \arguments{
 \item{log_level}{level of logging (1-5)}

@@ -16,5 +16,5 @@ name of file without extension
 Extract name from filepath
 }
 \examples{
-examples get_name("R/my_script.R") returns 'my_script'
+get_name("R/my_script.R") returns 'my_script'
 }
