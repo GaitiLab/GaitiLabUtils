@@ -10,10 +10,8 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Depends: 
-    R (>= 2.10),
-    BiocManager,
-    BiocVersion, 
-    cpp11,
+    R (>= 2.10), 
+    MASS
 LazyData: true
 Imports:
     ggplot2,
@@ -39,5 +37,5 @@ Config/renv/profiles/dev:
     styler,
     lintr,
     httpgd,
-    rlang
-
+    rlang,
+    pkgdown
