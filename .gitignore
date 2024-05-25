@@ -71,4 +71,5 @@ omnipathr-log
 pre-commit-hooks
 data_temporary
 prepare_package
+
 docs
