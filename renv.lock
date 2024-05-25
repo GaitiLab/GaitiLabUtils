@@ -3,28 +3,8 @@
     "Version": "4.2.2",
     "Repositories": [
       {
-        "Name": "BioCsoft",
-        "URL": "https://bioconductor.org/packages/3.16/bioc"
-      },
-      {
-        "Name": "BioCann",
-        "URL": "https://bioconductor.org/packages/3.16/data/annotation"
-      },
-      {
-        "Name": "BioCexp",
-        "URL": "https://bioconductor.org/packages/3.16/data/experiment"
-      },
-      {
-        "Name": "BioCworkflows",
-        "URL": "https://bioconductor.org/packages/3.16/workflows"
-      },
-      {
-        "Name": "BioCbooks",
-        "URL": "https://bioconductor.org/packages/3.16/books"
-      },
-      {
-        "Name": "https://packagemanager.rstudio.com/cran/latest",
-        "URL": "https://packagemanager.rstudio.com/cran/latest"
+        "Name": "CRAN",
+        "URL": "https://cloud.r-project.org"
       }
     ]
   },
@@ -35,7 +15,8 @@
     "BiocGenerics": {
       "Package": "BiocGenerics",
       "Version": "0.44.0",
-      "Source": "Bioconductor",
+      "Source": "Repository",
+      "Repository": "https://bioconductor.org/packages/3.16/bioc",
       "Requirements": [
         "R",
         "graphics",
@@ -47,27 +28,19 @@
     },
     "BiocManager": {
       "Package": "BiocManager",
-      "Version": "1.30.23",
+      "Version": "1.30.22",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "utils"
       ],
-      "Hash": "47e968dfe563c1b22c2e20a067ec21d5"
-    },
-    "BiocVersion": {
-      "Package": "BiocVersion",
-      "Version": "3.16.0",
-      "Source": "Bioconductor",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "44c5824508b9a10e52dbb505c34fa880"
+      "Hash": "d57e43105a1aa9cb54fdb4629725acb1"
     },
     "ComplexHeatmap": {
       "Package": "ComplexHeatmap",
       "Version": "2.14.0",
-      "Source": "Bioconductor",
+      "Source": "Repository",
+      "Repository": "https://bioconductor.org/packages/3.16/bioc",
       "Requirements": [
         "GetoptLong",
         "GlobalOptions",
@@ -95,7 +68,7 @@
       "Package": "GetoptLong",
       "Version": "1.0.5",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "GlobalOptions",
         "R",
@@ -109,7 +82,7 @@
       "Package": "GlobalOptions",
       "Version": "0.1.2",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "methods",
@@ -120,7 +93,8 @@
     "IRanges": {
       "Package": "IRanges",
       "Version": "2.32.0",
-      "Source": "Bioconductor",
+      "Source": "Repository",
+      "Repository": "https://bioconductor.org/packages/3.16/bioc",
       "Requirements": [
         "BiocGenerics",
         "R",
@@ -136,7 +110,7 @@
       "Package": "MASS",
       "Version": "7.3-59",
       "Source": "Repository",
-      "Repository": "https://cran.rstudio.com",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "grDevices",
@@ -151,7 +125,7 @@
       "Package": "Matrix",
       "Version": "1.6-5",
       "Source": "Repository",
-      "Repository": "https://cran.rstudio.com",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "grDevices",
@@ -178,7 +152,7 @@
       "Package": "RColorBrewer",
       "Version": "1.1-3",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R"
       ],
@@ -198,7 +172,8 @@
     "S4Vectors": {
       "Package": "S4Vectors",
       "Version": "0.36.2",
-      "Source": "Bioconductor",
+      "Source": "Repository",
+      "Repository": "https://bioconductor.org/packages/3.16/bioc",
       "Requirements": [
         "BiocGenerics",
         "R",
@@ -213,7 +188,7 @@
       "Package": "argparse",
       "Version": "2.2.3",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "R6",
@@ -309,7 +284,7 @@
       "Package": "circlize",
       "Version": "0.4.16",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "GlobalOptions",
         "R",
@@ -349,7 +324,7 @@
       "Package": "clue",
       "Version": "0.3-65",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "cluster",
@@ -363,7 +338,7 @@
       "Package": "cluster",
       "Version": "2.1.6",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "grDevices",
@@ -377,7 +352,7 @@
       "Package": "codetools",
       "Version": "0.2-20",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R"
       ],
@@ -387,7 +362,7 @@
       "Package": "colorspace",
       "Version": "2.1-0",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "grDevices",
@@ -442,13 +417,13 @@
     },
     "curl": {
       "Package": "curl",
-      "Version": "5.2.1",
+      "Version": "5.0.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "411ca2c03b1ce5f548345d2fc2685f7a"
+      "Hash": "2118af9cb164c8d2dddc7b89eaf732d9"
     },
     "desc": {
       "Package": "desc",
@@ -527,7 +502,7 @@
       "Package": "doParallel",
       "Version": "1.0.17",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "foreach",
@@ -561,7 +536,7 @@
       "Package": "dplyr",
       "Version": "1.1.4",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "R6",
@@ -618,7 +593,7 @@
       "Package": "farver",
       "Version": "2.1.2",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Hash": "680887028577f3fa2a81e410ed0d6e42"
     },
     "fastmap": {
@@ -632,7 +607,7 @@
       "Package": "findpython",
       "Version": "1.0.8",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Hash": "8f9aa3ce842296afaad4083b839481a1"
     },
     "fontawesome": {
@@ -651,7 +626,7 @@
       "Package": "foreach",
       "Version": "1.5.2",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "codetools",
@@ -675,7 +650,7 @@
       "Package": "generics",
       "Version": "0.1.3",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "methods"
@@ -701,7 +676,7 @@
       "Package": "ggplot2",
       "Version": "3.5.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "MASS",
         "R",
@@ -726,7 +701,7 @@
       "Package": "ggtext",
       "Version": "0.1.2",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "ggplot2",
@@ -741,7 +716,7 @@
       "Package": "ggthemes",
       "Version": "5.1.0",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "ggplot2",
@@ -799,7 +774,7 @@
       "Package": "gridtext",
       "Version": "0.1.5",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "Rcpp",
@@ -819,7 +794,7 @@
       "Package": "gtable",
       "Version": "0.3.5",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "cli",
@@ -932,7 +907,7 @@
       "Package": "isoband",
       "Version": "0.2.7",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "grid",
         "utils"
@@ -943,7 +918,7 @@
       "Package": "iterators",
       "Version": "1.0.14",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "utils"
@@ -954,7 +929,7 @@
       "Package": "jpeg",
       "Version": "0.1-10",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R"
       ],
@@ -1000,7 +975,7 @@
       "Package": "labeling",
       "Version": "0.4.3",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "graphics",
         "stats"
@@ -1022,7 +997,7 @@
       "Package": "lattice",
       "Version": "0.22-6",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "grDevices",
@@ -1050,7 +1025,7 @@
       "Package": "log4r",
       "Version": "0.4.3",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Hash": "2e3b3470a4f186d4ae1d71cc374446d9"
     },
     "magrittr": {
@@ -1067,7 +1042,7 @@
       "Package": "markdown",
       "Version": "1.12",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "commonmark",
@@ -1080,7 +1055,7 @@
       "Package": "matrixStats",
       "Version": "1.3.0",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R"
       ],
@@ -1101,7 +1076,7 @@
       "Package": "mgcv",
       "Version": "1.9-1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "Matrix",
         "R",
@@ -1140,7 +1115,7 @@
       "Package": "munsell",
       "Version": "0.5.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "colorspace",
         "methods"
@@ -1151,7 +1126,7 @@
       "Package": "nlme",
       "Version": "3.1-164",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "graphics",
@@ -1268,7 +1243,7 @@
       "Package": "plyr",
       "Version": "1.8.9",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "Rcpp"
@@ -1279,7 +1254,7 @@
       "Package": "png",
       "Version": "0.1-8",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R"
       ],
@@ -1453,7 +1428,7 @@
       "Package": "rjson",
       "Version": "0.2.21",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R"
       ],
@@ -1566,7 +1541,7 @@
       "Package": "scales",
       "Version": "1.3.0",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "R6",
@@ -1599,7 +1574,7 @@
       "Package": "shape",
       "Version": "1.4.6.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "grDevices",
@@ -1653,16 +1628,16 @@
     },
     "stringi": {
       "Package": "stringi",
-      "Version": "1.8.4",
+      "Version": "1.7.12",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "stats",
         "tools",
         "utils"
       ],
-      "Hash": "39e1144fd75428983dc3f63aa53dfa91"
+      "Hash": "ca8bd84263c77310739d2cf64d84d7c9"
     },
     "stringr": {
       "Package": "stringr",
@@ -1764,7 +1739,7 @@
       "Package": "tidyr",
       "Version": "1.3.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "cli",
@@ -1787,7 +1762,7 @@
       "Package": "tidyselect",
       "Version": "1.2.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R",
         "cli",
@@ -1882,7 +1857,7 @@
       "Package": "viridisLite",
       "Version": "0.4.2",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
       "Requirements": [
         "R"
       ],
@@ -1939,16 +1914,14 @@
     },
     "xml2": {
       "Package": "xml2",
-      "Version": "1.3.6",
+      "Version": "1.3.3",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
-        "cli",
-        "methods",
-        "rlang"
+        "methods"
       ],
-      "Hash": "1d0336142f4cd25d8d23cd3ba7a8fb61"
+      "Hash": "40682ed6a969ea5abfd351eb67833adc"
     },
     "xopen": {
       "Package": "xopen",
