@@ -39,3 +39,4 @@ Config/renv/profiles/dev:
     httpgd,
     rlang,
     pkgdown
+URL: https://gaitilab.github.io/GaitiLabUtils/
