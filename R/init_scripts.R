@@ -73,7 +73,6 @@ init_logging <- function(log_level = 5, log_file = NULL) {
 
 #' @title Logging functions: log_info
 #'
-#' @param logr logger object
 #' @param ... message
 #'
 #' @examples 
@@ -82,13 +81,12 @@ init_logging <- function(log_level = 5, log_file = NULL) {
 #' }
 #' @export
 #' @importFrom log4r console_appender default_log_layout logger
-log_info <- function(logr,...) {
+log_info <- function(...) {
   log4r::info(logr, paste0(...))
 }
 
 #' @title Logging functions: log_error
 #'
-#' @param logr logger object
 #' @param ... message
 #'
 #' @examples 
@@ -97,7 +95,7 @@ log_info <- function(logr,...) {
 #' }
 #' @importFrom log4r console_appender default_log_layout logger
 #' @export
-log_error <- function(logr,...) {
+log_error <- function(...) {
   log4r::error(logr, paste0(...))
 }
 
@@ -112,13 +110,11 @@ log_error <- function(logr,...) {
 #' }
 #' @importFrom log4r console_appender default_log_layout logger
 #' @export
-log_fatal <- function(logr,...) {
+log_fatal <- function(...) {
   log4r::fatal(logr, paste0(...))
 }
 
 #' @title Logging functions: log_debug
-#'
-#' @param logr logger object
 #' @param ... message
 
 #' @examples 
@@ -127,13 +123,12 @@ log_fatal <- function(logr,...) {
 #' }
 #' @importFrom log4r console_appender default_log_layout logger
 #' @export
-log_debug <- function(logr,...) {
+log_debug <- function(...) {
   log4r::debug(logr, paste0(...))
 }
 
 #' @title Logging functions: log.warn
 #'
-#' @param logr logging object
 #' @param ... message
 #'
 #' @examples 
@@ -143,6 +138,6 @@ log_debug <- function(logr,...) {
 #' @export
 #' @importFrom log4r console_appender default_log_layout logger
 
-log_warn <- function(logr,...) {
+log_warn <- function(...) {
   log4r::warn(logr, paste0(...))
 }
