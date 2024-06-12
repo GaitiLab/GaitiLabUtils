@@ -13,7 +13,6 @@ Depends:
     R (>= 2.10), 
     MASS
 LazyData: true
-biocViews:
 Imports:
     ggplot2,
     ggthemes,
@@ -28,7 +27,9 @@ Imports:
     tidyr,
     tools,
     ggtext, 
-    ComplexHeatmap,
+    ComplexHeatmap, 
+    knitr
+biocViews: ComplexHeatmap
 Config/renv/profiles/dev: 
     httpgd,
     languageserver,
@@ -41,3 +42,6 @@ Config/renv/profiles/dev:
     rlang,
     pkgdown
 URL: https://gaitilab.github.io/GaitiLabUtils/
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

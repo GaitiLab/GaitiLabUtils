@@ -4,11 +4,9 @@
 \alias{log_warn}
 \title{Logging functions: log.warn}
 \usage{
-log_warn(logr, ...)
+log_warn(...)
 }
 \arguments{
-\item{logr}{logging object}
-
 \item{...}{message}
 }
 \description{

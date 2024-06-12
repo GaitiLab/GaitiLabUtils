@@ -73,3 +73,5 @@ data_temporary
 prepare_package
 
 docs
+
+*.pdf

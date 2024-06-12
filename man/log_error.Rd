@@ -4,11 +4,9 @@
 \alias{log_error}
 \title{Logging functions: log_error}
 \usage{
-log_error(logr, ...)
+log_error(...)
 }
 \arguments{
-\item{logr}{logger object}
-
 \item{...}{message}
 }
 \description{

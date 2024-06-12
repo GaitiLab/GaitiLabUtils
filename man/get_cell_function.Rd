@@ -2,17 +2,17 @@
 % Please edit documentation in R/vis.R
 \name{get_cell_function}
 \alias{get_cell_function}
-\title{Determine cell function}
+\title{Obtain optimal ComplexHeatmap Size}
 \usage{
 get_cell_function(matrix, is_upper_tri = FALSE, add_annot = TRUE)
 }
 \arguments{
-\item{matrix}{matrix to use (either the same heatmap used for create_hm() or other matrix (e.g. p-values) with same dimensions)}
+\item{matrix}{matrix to use}
 
-\item{is_upper_tri}{Only draw upper triangle default = FALSE}
+\item{is_upper_tri}{default=FALSE,}
 
-\item{add_annot}{add annotations to cells, i.e. values of matrix}
+\item{add_annot}{default= TRUE}
 }
 \description{
-Determine cell decoration function for use with ComplexHeatmap
+Obtain optimal ComplexHeatmap Size
 }

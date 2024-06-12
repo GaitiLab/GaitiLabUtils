@@ -1,8 +1,18 @@
+#' @title Autocrop plot
+#' @description Crop plot to remove white space
+#' @param filename filename
+#' @return NA
+#' @export
+auto_crop <- function(filename) {
+    knitr::plot_crop(filename)
+}
+
 #' @title Obtain optimal ComplexHeatmap Size
 #' @description Obtain optimal size of heatmap or list of heatmaps
 #' @param hm heatmap or list of heatmaps
 #' @param m margin
 #' @return list of height and width
+#' @export
 #' @importFrom ComplexHeatmap draw component_height component_width
 #' @importFrom grid convertHeight
 get_optimal_output_size <- function(hm, m = 4) {
@@ -18,11 +28,12 @@ get_optimal_output_size <- function(hm, m = 4) {
     return(list(height = ht_height, width = ht_width))
 }
 
-#' @title Determine cell function
-#' @description Determine cell decoration function for use with ComplexHeatmap
-#' @param matrix matrix to use (either the same heatmap used for create_hm() or other matrix (e.g. p-values) with same dimensions)
-#' @param is_upper_tri Only draw upper triangle default = FALSE
-#' @param add_annot add annotations to cells, i.e. values of matrix
+
+#' @title Obtain optimal ComplexHeatmap Size
+#' @param matrix matrix to use
+#' @param is_upper_tri default=FALSE,
+#' @param add_annot default= TRUE
+#' @export
 get_cell_function <- function(matrix, is_upper_tri = FALSE, add_annot = TRUE) {
     # Full matrix
     cell_fun_annot <- function(j, i, x, y, width, height, fill) {
@@ -114,48 +125,66 @@ get_cell_dims <- function(matrix, cell_width = 0.1, cell_height = 0.1) {
 #' @export
 save_hm <- function(
     hm_obj,
-    annotation_legend_side = "right",
-    heatmap_legend_side = "right",
+    annotation_legend_side = "bottom",
+    heatmap_legend_side = "bottom",
     merge_legend = TRUE,
     heatmap_legend_list = NULL,
     annotation_legend_list = NULL, output_file = "heatmap.pdf") {
-    # Only heatmap legends
-    if (!is.null(heatmap_legend_list) & is.null(annotation_legend_list)) {
-        hm_obj <- draw(hm_obj,
-            merge_legend = merge_legend,
-            annotation_legend_side = annotation_legend_side,
-            annotation_legend_list = annotation_legend_list,
-        )
-        # Only annotation legend
-    } else if ((is.null(heatmap_legend_list) & !is.null(annotation_legend_list))) {
-        hm_obj <- draw(hm_obj,
-            merge_legend = merge_legend,
-            annotation_legend_side = annotation_legend_side,
-            annotation_legend_list = annotation_legend_list
-        )
-        # Both heatmap and annotation legend
-    } else if (!is.null(heatmap_legend_list) & !is.null(annotation_legend_list)) {
-        hm_obj <- draw(hm_obj,
-            merge_legend = merge_legend,
-            annotation_legend_side = annotation_legend_side,
-            annotation_legend_list = annotation_legend_list,
-            heatmap_legend_side = heatmap_legend_side,
-            heatmap_legend_list = heatmap_legend_list
-        )
-    } else {
-        # No legends provided
-        hm_obj <- draw(hm_obj)
-    }
+    # # Only heatmap legends
+    # if (!is.null(heatmap_legend_list) & is.null(annotation_legend_list)) {
+    #     hm_obj <- ComplexHeatmap::draw(hm_obj,
+    #         merge_legend = merge_legend,
+    #         annotation_legend_side = annotation_legend_side,
+    #         annotation_legend_list = annotation_legend_list,
+    #     )
+    #     # Only annotation legend
+    # } else if ((is.null(heatmap_legend_list) & !is.null(annotation_legend_list))) {
+    #     hm_obj <- ComplexHeatmap::draw(hm_obj,
+    #         merge_legend = merge_legend,
+    #         annotation_legend_side = annotation_legend_side,
+    #         annotation_legend_list = annotation_legend_list
+    #     )
+    #     # Both heatmap and annotation legend
+    # } else if (!is.null(heatmap_legend_list) & !is.null(annotation_legend_list)) {
+    #     hm_obj <- ComplexHeatmap::draw(hm_obj,
+    #         merge_legend = merge_legend,
+    #         annotation_legend_side = annotation_legend_side,
+    #         annotation_legend_list = annotation_legend_list,
+    #         heatmap_legend_side = heatmap_legend_side,
+    #         heatmap_legend_list = heatmap_legend_list
+    #     )
+    # } else {
+    #     # No legends provided
+    #     hm_obj <- ComplexHeatmap::draw(hm_obj,
+    #         annotation_legend_side = "bottom",
+    #         heatmap_legend_side = "bottom",
+    #     )
+    # }
+    hm_obj <- ComplexHeatmap::draw(hm_obj,
+        merge_legend = merge_legend,
+        annotation_legend_side = annotation_legend_side,
+        annotation_legend_list = annotation_legend_list,
+        heatmap_legend_side = heatmap_legend_side,
+        heatmap_legend_list = heatmap_legend_list
+    )
     hm_size <- get_optimal_output_size(hm_obj)
     pdf(output_file, width = hm_size$width, height = hm_size$height)
-    draw(hm_obj)
+    ComplexHeatmap::draw(hm_obj,
+        merge_legend = merge_legend,
+        annotation_legend_side = annotation_legend_side,
+        annotation_legend_list = annotation_legend_list,
+        heatmap_legend_side = heatmap_legend_side,
+        heatmap_legend_list = heatmap_legend_list
+    )
     dev.off()
 }
 
-#' @title Create Heatmap using ComplexHeatmap
-#' @param matrix matrix
-#' @param cell_width with of cell in 'mm'
-#' @param cell_height height of cell in 'mm'
+#' Plot heatmap + save
+#' @param mat matrix
+#' @param col_fun color function
+#' @param output_file output file name
+#' @param legend_title legend title
+#' @param save_plot save plot
 #' @return hm
 #' @export
 #' @importFrom ComplexHeatmap Heatmap draw

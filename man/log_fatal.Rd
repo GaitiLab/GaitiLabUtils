@@ -4,12 +4,12 @@
 \alias{log_fatal}
 \title{Logging functions: log_fatal}
 \usage{
-log_fatal(logr, ...)
+log_fatal(...)
 }
 \arguments{
-\item{logr}{logger object}
-
 \item{...}{message}
+
+\item{logr}{logger object}
 }
 \description{
 Logging functions: log_fatal

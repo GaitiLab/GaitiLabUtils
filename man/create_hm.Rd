@@ -2,20 +2,26 @@
 % Please edit documentation in R/vis.R
 \name{create_hm}
 \alias{create_hm}
-\title{Create Heatmap using ComplexHeatmap}
+\title{Plot heatmap + save}
 \usage{
 create_hm(matrix, cell_width = 4, cell_height = 4, ...)
 }
 \arguments{
-\item{matrix}{matrix}
+\item{matrix}{A matrix. Either numeric or character. If it is a simple vector, it will be converted to a one-column matrix.}
 
-\item{cell_width}{with of cell in 'mm'}
+\item{mat}{matrix}
 
-\item{cell_height}{height of cell in 'mm'}
+\item{col_fun}{color function}
+
+\item{output_file}{output file name}
+
+\item{legend_title}{legend title}
+
+\item{save_plot}{save plot}
 }
 \value{
 hm
 }
 \description{
-Create Heatmap using ComplexHeatmap
+Plot heatmap + save
 }

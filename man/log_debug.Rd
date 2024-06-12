@@ -4,11 +4,9 @@
 \alias{log_debug}
 \title{Logging functions: log_debug}
 \usage{
-log_debug(logr, ...)
+log_debug(...)
 }
 \arguments{
-\item{logr}{logger object}
-
 \item{...}{message}
 }
 \description{

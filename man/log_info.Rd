@@ -4,11 +4,9 @@
 \alias{log_info}
 \title{Logging functions: log_info}
 \usage{
-log_info(logr, ...)
+log_info(...)
 }
 \arguments{
-\item{logr}{logger object}
-
 \item{...}{message}
 }
 \description{
