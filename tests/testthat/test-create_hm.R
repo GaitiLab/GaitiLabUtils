@@ -27,7 +27,7 @@ test_that("create simple heatmap + annot", {
   # Create matrix
   mat <- matrix(runif(25), nrow = 5)
 
-  cell_func <- get_cell_function(annot_matrix = round(mat, 2), is_upper_tri = FALSE, add_annot = TRUE)
+  cell_func <- get_cell_function(matrix = round(mat, 2), is_upper_tri = FALSE, add_annot = TRUE)
 
   hm <- create_hm(matrix = mat, hm_cell_function = cell_func)
 
@@ -41,7 +41,7 @@ test_that("create simple heatmap + annot + save", {
   # Create matrix
   mat <- matrix(runif(25), nrow = 5)
 
-  cell_func <- get_cell_function(annot_matrix = round(mat, 2), is_upper_tri = FALSE, add_annot = TRUE)
+  cell_func <- get_cell_function(matrix = round(mat, 2), is_upper_tri = FALSE, add_annot = TRUE)
 
 
   hm <- create_hm(matrix = mat, hm_cell_function = cell_func)
@@ -62,7 +62,7 @@ test_that("create simple heatmap + different annot + save", {
   mat <- matrix(runif(25), nrow = 5)
   annot_mat <- matrix(rep(1, 25), nrow = 5)
 
-  cell_func <- get_cell_function(annot_matrix = annot_mat, is_upper_tri = FALSE, add_annot = TRUE)
+  cell_func <- get_cell_function(matrix = annot_mat, is_upper_tri = FALSE, add_annot = TRUE)
   hm <- create_hm(matrix = mat, hm_cell_function = cell_func)
 
   # Save heatmap
@@ -82,7 +82,7 @@ test_that("create simple heatmap + is_upper_tri", {
   mat <- matrix(runif(25), nrow = 5)
   annot_mat <- matrix(rep(1, 25), nrow = 5)
 
-  cell_func <- get_cell_function(annot_matrix = annot_mat, is_upper_tri = FALSE)
+  cell_func <- get_cell_function(matrix = annot_mat, is_upper_tri = FALSE)
   hm <- create_hm(mat = mat, is_upper_tri = TRUE)
   hm
   # Save heatmap
