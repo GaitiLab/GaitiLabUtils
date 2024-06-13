@@ -10,7 +10,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Depends: 
-    R (>= 2.10), 
+    R (>= 4.0), 
     MASS
 LazyData: true
 Imports:
@@ -28,7 +28,8 @@ Imports:
     tools,
     ggtext, 
     ComplexHeatmap, 
-    knitr
+    knitr, 
+    Matrix (< 1.7)
 biocViews: ComplexHeatmap
 Config/renv/profiles/dev: 
     httpgd,
