@@ -29,7 +29,7 @@ Imports:
     ggtext, 
     ComplexHeatmap, 
     knitr, 
-    Matrix (< 1.7)
+    Matrix
 biocViews: ComplexHeatmap
 Config/renv/profiles/dev: 
     httpgd,
@@ -46,3 +46,5 @@ URL: https://gaitilab.github.io/GaitiLabUtils/
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Remotes:
+    cran/Matrix@1.6-5
