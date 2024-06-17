@@ -1,12 +1,3 @@
-#' @title Autocrop plot
-#' @description Crop plot to remove white space
-#' @param filename filename
-#' @return NA
-#' @export
-auto_crop <- function(filename) {
-    knitr::plot_crop(filename)
-}
-
 #' @title Obtain optimal ComplexHeatmap Size
 #' @description Obtain optimal size of heatmap or list of heatmaps
 #' @param hm heatmap or list of heatmaps
@@ -20,11 +11,11 @@ get_optimal_output_size <- function(hm, m = 4) {
     hm_obj <- draw(hm)
 
     # Obtain height and width and convert to inches
-    ht_height <- sum(component_height(hm_obj)) + unit(m, "mm")
-    ht_height <- convertHeight(ht_height, "inch", valueOnly = TRUE)
+    ht_height <- sum(ComplexHeatmap::component_height(hm_obj)) + grid::unit(m, "mm")
+    ht_height <- ComplexHeatmap::convertHeight(ht_height, "inch", valueOnly = TRUE)
 
-    ht_width <- sum(component_width(hm_obj)) + unit(m, "mm")
-    ht_width <- convertHeight(ht_width, "inch", valueOnly = TRUE)
+    ht_width <- sum(ComplexHeatmap::component_width(hm_obj)) + grid::unit(m, "mm")
+    ht_width <- ComplexHeatmap::convertHeight(ht_width, "inch", valueOnly = TRUE)
     return(list(height = ht_height, width = ht_width))
 }
 
@@ -37,49 +28,49 @@ get_optimal_output_size <- function(hm, m = 4) {
 get_cell_function <- function(matrix, is_upper_tri = FALSE, add_annot = TRUE) {
     # Full matrix
     cell_fun_annot <- function(j, i, x, y, width, height, fill) {
-        grid.rect(
+        grid::grid.rect(
             x = x, y = y, width = width, height = height,
-            gp = gpar(col = "grey", fill = NA, lwd = 0.2)
+            gp = grid::gpar(col = "grey", fill = NA, lwd = 0.2)
         )
-        grid.text(matrix[i, j], x, y, gp = gpar(fontsize = 5))
+        grid::grid.text(matrix[i, j], x, y, gp = grid::gpar(fontsize = 5))
     }
 
     cell_fun_no_annot <- function(j, i, x, y, width, height, fill) {
-        grid.rect(
+        grid::grid.rect(
             x = x, y = y, width = width, height = height,
-            gp = gpar(col = "grey", fill = NA, lwd = 0.2)
+            gp = grid::gpar(col = "grey", fill = NA, lwd = 0.2)
         )
     }
 
     # Triangular
     cell_fun_tri_annot <- function(j, i, x, y, width, height, fill) {
         if (i > j) {
-            grid.rect(
+            grid::grid.rect(
                 x = x,
                 y = y, width = width, height = height,
-                gp = gpar(col = NA, fill = NA, lwd = 0)
+                gp = grid::gpar(col = NA, fill = NA, lwd = 0)
             )
         } else {
-            grid.rect(
+            grid::grid.rect(
                 x = x, y = y, width = width, height = height,
-                gp = gpar(col = "grey", fill = NA, lwd = 0.2)
+                gp = grid::gpar(col = "grey", fill = NA, lwd = 0.2)
             )
-            grid.text(matrix[i, j], x, y, gp = gpar(fontsize = 5))
+            grid::grid.text(matrix[i, j], x, y, gp = grid::gpar(fontsize = 5))
         }
     }
 
     cell_fun_tri_no_annot <- function(j, i, x, y, width, height, fill) {
         if (i > j) {
-            grid.rect(
+            grid::grid.rect(
                 x = x,
                 y = y, width = width, height = height,
-                gp = gpar(col = NA, fill = NA, lwd = 0)
+                gp = grid::gpar(col = NA, fill = NA, lwd = 0)
             )
         } else {
-            grid.rect(
+            grid::grid.rect(
                 x = x,
                 y = y, width = width, height = height,
-                gp = gpar(col = "grey", fill = NA, lwd = 0.2)
+                gp = grid::gpar(col = "grey", fill = NA, lwd = 0.2)
             )
         }
     }
@@ -107,8 +98,8 @@ get_cell_function <- function(matrix, is_upper_tri = FALSE, add_annot = TRUE) {
 #' @return list with height and width
 #' @importFrom grid unit
 get_cell_dims <- function(matrix, cell_width = 0.1, cell_height = 0.1) {
-    height <- nrow(matrix) * unit(cell_height, "mm")
-    width <- ncol(matrix) * unit(cell_width, "mm")
+    height <- nrow(matrix) * grid::unit(cell_height, "mm")
+    width <- ncol(matrix) * grid::unit(cell_width, "mm")
     return(list(height = height, width = width))
 }
 
@@ -187,18 +178,13 @@ save_hm <- function(
 #' @param save_plot save plot
 #' @return hm
 #' @export
-#' @importFrom ComplexHeatmap Heatmap draw
-#' @importFrom dplyr %>%
-#' @importFrom grid unit gpar grid.rect
-#' @importFrom plyr .
-#' @inheritParams ComplexHeatmap::Heatmap
 create_hm <- function(
     matrix,
     cell_width = 4,
     cell_height = 4,
     ...) {
     cell_dims <- get_cell_dims(matrix = matrix, cell_width = cell_width, cell_height = cell_height)
-    hm <- Heatmap(
+    hm <- ComplexHeatmap::Heatmap(
         matrix = matrix,
         # Size of cells (use square)
         height = cell_dims$height,
