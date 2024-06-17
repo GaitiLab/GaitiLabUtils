@@ -12,10 +12,10 @@ get_optimal_output_size <- function(hm, m = 4) {
 
     # Obtain height and width and convert to inches
     ht_height <- sum(ComplexHeatmap::component_height(hm_obj)) + grid::unit(m, "mm")
-    ht_height <- ComplexHeatmap::convertHeight(ht_height, "inch", valueOnly = TRUE)
+    ht_height <- grid::convertHeight(ht_height, "inch", valueOnly = TRUE)
 
     ht_width <- sum(ComplexHeatmap::component_width(hm_obj)) + grid::unit(m, "mm")
-    ht_width <- ComplexHeatmap::convertHeight(ht_width, "inch", valueOnly = TRUE)
+    ht_width <- grid::convertHeight(ht_width, "inch", valueOnly = TRUE)
     return(list(height = ht_height, width = ht_width))
 }
 
