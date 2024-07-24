@@ -1,3 +1,12 @@
+#' @title Autocrop plot
+#' @description Crop plot to remove white space
+#' @param filename filename
+#' @return NA
+#' @export
+auto_crop <- function(filename) {
+    knitr::plot_crop(filename)
+}
+
 #' @title Obtain optimal ComplexHeatmap Size
 #' @description Obtain optimal size of heatmap or list of heatmaps
 #' @param hm heatmap or list of heatmaps
@@ -11,11 +20,11 @@ get_optimal_output_size <- function(hm, m = 4) {
     hm_obj <- draw(hm)
 
     # Obtain height and width and convert to inches
-    ht_height <- sum(ComplexHeatmap::component_height(hm_obj)) + grid::unit(m, "mm")
-    ht_height <- grid::convertHeight(ht_height, "inch", valueOnly = TRUE)
+    ht_height <- sum(component_height(hm_obj)) + unit(m, "mm")
+    ht_height <- convertHeight(ht_height, "inch", valueOnly = TRUE)
 
-    ht_width <- sum(ComplexHeatmap::component_width(hm_obj)) + grid::unit(m, "mm")
-    ht_width <- grid::convertHeight(ht_width, "inch", valueOnly = TRUE)
+    ht_width <- sum(component_width(hm_obj)) + unit(m, "mm")
+    ht_width <- convertHeight(ht_width, "inch", valueOnly = TRUE)
     return(list(height = ht_height, width = ht_width))
 }
 
@@ -28,49 +37,49 @@ get_optimal_output_size <- function(hm, m = 4) {
 get_cell_function <- function(matrix, is_upper_tri = FALSE, add_annot = TRUE) {
     # Full matrix
     cell_fun_annot <- function(j, i, x, y, width, height, fill) {
-        grid::grid.rect(
+        grid.rect(
             x = x, y = y, width = width, height = height,
-            gp = grid::gpar(col = "grey", fill = NA, lwd = 0.2)
+            gp = gpar(col = "grey", fill = NA, lwd = 0.2)
         )
-        grid::grid.text(matrix[i, j], x, y, gp = grid::gpar(fontsize = 5))
+        grid.text(matrix[i, j], x, y, gp = gpar(fontsize = 5))
     }
 
     cell_fun_no_annot <- function(j, i, x, y, width, height, fill) {
-        grid::grid.rect(
+        grid.rect(
             x = x, y = y, width = width, height = height,
-            gp = grid::gpar(col = "grey", fill = NA, lwd = 0.2)
+            gp = gpar(col = "grey", fill = NA, lwd = 0.2)
         )
     }
 
     # Triangular
     cell_fun_tri_annot <- function(j, i, x, y, width, height, fill) {
         if (i > j) {
-            grid::grid.rect(
+            grid.rect(
                 x = x,
                 y = y, width = width, height = height,
-                gp = grid::gpar(col = NA, fill = NA, lwd = 0)
+                gp = gpar(col = NA, fill = NA, lwd = 0)
             )
         } else {
-            grid::grid.rect(
+            grid.rect(
                 x = x, y = y, width = width, height = height,
-                gp = grid::gpar(col = "grey", fill = NA, lwd = 0.2)
+                gp = gpar(col = "grey", fill = NA, lwd = 0.2)
             )
-            grid::grid.text(matrix[i, j], x, y, gp = grid::gpar(fontsize = 5))
+            grid.text(matrix[i, j], x, y, gp = gpar(fontsize = 5))
         }
     }
 
     cell_fun_tri_no_annot <- function(j, i, x, y, width, height, fill) {
         if (i > j) {
-            grid::grid.rect(
+            grid.rect(
                 x = x,
                 y = y, width = width, height = height,
-                gp = grid::gpar(col = NA, fill = NA, lwd = 0)
+                gp = gpar(col = NA, fill = NA, lwd = 0)
             )
         } else {
-            grid::grid.rect(
+            grid.rect(
                 x = x,
                 y = y, width = width, height = height,
-                gp = grid::gpar(col = "grey", fill = NA, lwd = 0.2)
+                gp = gpar(col = "grey", fill = NA, lwd = 0.2)
             )
         }
     }
@@ -98,8 +107,8 @@ get_cell_function <- function(matrix, is_upper_tri = FALSE, add_annot = TRUE) {
 #' @return list with height and width
 #' @importFrom grid unit
 get_cell_dims <- function(matrix, cell_width = 0.1, cell_height = 0.1) {
-    height <- nrow(matrix) * grid::unit(cell_height, "mm")
-    width <- ncol(matrix) * grid::unit(cell_width, "mm")
+    height <- nrow(matrix) * unit(cell_height, "mm")
+    width <- ncol(matrix) * unit(cell_width, "mm")
     return(list(height = height, width = width))
 }
 
@@ -116,57 +125,41 @@ get_cell_dims <- function(matrix, cell_width = 0.1, cell_height = 0.1) {
 #' @export
 save_hm <- function(
     hm_obj,
-    annotation_legend_side = "bottom",
-    heatmap_legend_side = "bottom",
+    annotation_legend_side = "right",
+    heatmap_legend_side = "right",
     merge_legend = TRUE,
     heatmap_legend_list = NULL,
     annotation_legend_list = NULL, output_file = "heatmap.pdf") {
-    # # Only heatmap legends
-    # if (!is.null(heatmap_legend_list) & is.null(annotation_legend_list)) {
-    #     hm_obj <- ComplexHeatmap::draw(hm_obj,
-    #         merge_legend = merge_legend,
-    #         annotation_legend_side = annotation_legend_side,
-    #         annotation_legend_list = annotation_legend_list,
-    #     )
-    #     # Only annotation legend
-    # } else if ((is.null(heatmap_legend_list) & !is.null(annotation_legend_list))) {
-    #     hm_obj <- ComplexHeatmap::draw(hm_obj,
-    #         merge_legend = merge_legend,
-    #         annotation_legend_side = annotation_legend_side,
-    #         annotation_legend_list = annotation_legend_list
-    #     )
-    #     # Both heatmap and annotation legend
-    # } else if (!is.null(heatmap_legend_list) & !is.null(annotation_legend_list)) {
-    #     hm_obj <- ComplexHeatmap::draw(hm_obj,
-    #         merge_legend = merge_legend,
-    #         annotation_legend_side = annotation_legend_side,
-    #         annotation_legend_list = annotation_legend_list,
-    #         heatmap_legend_side = heatmap_legend_side,
-    #         heatmap_legend_list = heatmap_legend_list
-    #     )
-    # } else {
-    #     # No legends provided
-    #     hm_obj <- ComplexHeatmap::draw(hm_obj,
-    #         annotation_legend_side = "bottom",
-    #         heatmap_legend_side = "bottom",
-    #     )
-    # }
-    hm_obj <- ComplexHeatmap::draw(hm_obj,
-        merge_legend = merge_legend,
-        annotation_legend_side = annotation_legend_side,
-        annotation_legend_list = annotation_legend_list,
-        heatmap_legend_side = heatmap_legend_side,
-        heatmap_legend_list = heatmap_legend_list
-    )
+    # Only heatmap legends
+    if (!is.null(heatmap_legend_list) & is.null(annotation_legend_list)) {
+        hm_obj <- draw(hm_obj,
+            merge_legend = merge_legend,
+            annotation_legend_side = annotation_legend_side,
+            annotation_legend_list = annotation_legend_list,
+        )
+        # Only annotation legend
+    } else if ((is.null(heatmap_legend_list) & !is.null(annotation_legend_list))) {
+        hm_obj <- draw(hm_obj,
+            merge_legend = merge_legend,
+            annotation_legend_side = annotation_legend_side,
+            annotation_legend_list = annotation_legend_list
+        )
+        # Both heatmap and annotation legend
+    } else if (!is.null(heatmap_legend_list) & !is.null(annotation_legend_list)) {
+        hm_obj <- draw(hm_obj,
+            merge_legend = merge_legend,
+            annotation_legend_side = annotation_legend_side,
+            annotation_legend_list = annotation_legend_list,
+            heatmap_legend_side = heatmap_legend_side,
+            heatmap_legend_list = heatmap_legend_list
+        )
+    } else {
+        # No legends provided
+        hm_obj <- draw(hm_obj)
+    }
     hm_size <- get_optimal_output_size(hm_obj)
     pdf(output_file, width = hm_size$width, height = hm_size$height)
-    ComplexHeatmap::draw(hm_obj,
-        merge_legend = merge_legend,
-        annotation_legend_side = annotation_legend_side,
-        annotation_legend_list = annotation_legend_list,
-        heatmap_legend_side = heatmap_legend_side,
-        heatmap_legend_list = heatmap_legend_list
-    )
+    draw(hm_obj)
     dev.off()
 }
 
@@ -178,13 +171,18 @@ save_hm <- function(
 #' @param save_plot save plot
 #' @return hm
 #' @export
+#' @importFrom ComplexHeatmap Heatmap draw
+#' @importFrom dplyr %>%
+#' @importFrom grid unit gpar grid.rect
+#' @importFrom plyr .
+#' @inheritParams ComplexHeatmap::Heatmap
 create_hm <- function(
     matrix,
     cell_width = 4,
     cell_height = 4,
     ...) {
     cell_dims <- get_cell_dims(matrix = matrix, cell_width = cell_width, cell_height = cell_height)
-    hm <- ComplexHeatmap::Heatmap(
+    hm <- Heatmap(
         matrix = matrix,
         # Size of cells (use square)
         height = cell_dims$height,

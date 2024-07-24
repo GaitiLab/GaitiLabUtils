@@ -11,7 +11,7 @@
 #' @importFrom fs path_file
 #'
 get_name <- function(filepath) {
-    return(file_path_sans_ext(path_file(filepath)))
+    return(fs::file_path_sans_ext(fs::path_file(filepath)))
 }
 
 #' @title Create directory
@@ -28,10 +28,10 @@ get_name <- function(filepath) {
 #' @importFrom glue glue
 create_dir <- function(dir_path) {
     if (!dir.exists(dir_path)) {
-        log_info(glue("Creating directory {dir_path}"))
+        message(glue::glue("Creating directory {dir_path}"))
         dir.create(dir_path, recursive = TRUE)
     } else {
-        log_warn(glue("Directory {dir_path} already exists."))
+        message(glue::glue("Directory {dir_path} already exists."))
     }
 }
 
@@ -49,16 +49,15 @@ get_current_date <- function() {
 #' @param set_index set 'col1' as index by default FALSE,
 #' @return transposed dataframe
 #' @export
-#' @importFrom tibble %>% rownames_to_column
-#' @importFrom tidyr  pivot_longer pivot_wider
+#' @importFrom dplyr %>%
 transpose_df <- function(df, set_index = FALSE) {
     t_df <- df %>%
-        rownames_to_column() %>%
-        pivot_longer(!rowname, names_to = "col1", values_to = "col2") %>%
-        pivot_wider(names_from = "rowname", values_from = "col2")
+        tibble::rownames_to_column() %>%
+        tidyr::pivot_longer(!rowname, names_to = "col1", values_to = "col2") %>%
+        tidyr::pivot_wider(names_from = "rowname", values_from = "col2")
 
     if (set_index) {
-        t_df <- t_df %>% column_to_rownames("col1")
+        t_df <- t_df %>% tibble::column_to_rownames("col1")
     }
     return(t_df)
 }

@@ -16,7 +16,7 @@ set_wd <- function() {
 #' @param output_default Default output directory
 #' @return parser object
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' setup_default_argparser(description = "Example")
 #' }
@@ -43,7 +43,7 @@ setup_default_argparser <- function(description = "", default_output = "output")
 #' @param log_file path to log file (optional)
 #' @return logger object
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' logr <- init_logging(3)
 #' }
@@ -75,7 +75,7 @@ init_logging <- function(log_level = 5, log_file = NULL) {
 #'
 #' @param ... message
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' log_info("Hello world!")
 #' }
@@ -89,7 +89,7 @@ log_info <- function(...) {
 #'
 #' @param ... message
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' log_error("Hello world!")
 #' }
@@ -104,7 +104,7 @@ log_error <- function(...) {
 #' @param logr logger object
 #' @param ... message
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' log_fatal("Hello world!")
 #' }
@@ -117,7 +117,7 @@ log_fatal <- function(...) {
 #' @title Logging functions: log_debug
 #' @param ... message
 
-#' @examples 
+#' @examples
 #' \dontrun{
 #' log_debug("Hello world!")
 #' }
@@ -131,7 +131,7 @@ log_debug <- function(...) {
 #'
 #' @param ... message
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' log_warn("Hello world!")
 #' }
