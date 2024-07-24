@@ -1,9 +1,8 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-06-27T21:16Z
+last_built: 2024-07-24T19:02Z
 urls:
   reference: https://gaitilab.github.io/GaitiLabUtils/reference
   article: https://gaitilab.github.io/GaitiLabUtils/articles
-
