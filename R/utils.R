@@ -7,11 +7,9 @@
 #' get_name("R/my_script.R") returns 'my_script'
 #' }
 #' @export
-#' @importFrom tools file_path_sans_ext
-#' @importFrom fs path_file
 #'
 get_name <- function(filepath) {
-    return(fs::file_path_sans_ext(fs::path_file(filepath)))
+    return(tools::file_path_sans_ext(fs::path_file(filepath)))
 }
 
 #' @title Create directory
