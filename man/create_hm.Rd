@@ -7,6 +7,8 @@
 create_hm(matrix, cell_width = 4, cell_height = 4, ...)
 }
 \arguments{
+\item{matrix}{A matrix. Either numeric or character. If it is a simple vector, it will be converted to a one-column matrix.}
+
 \item{mat}{matrix}
 
 \item{col_fun}{color function}

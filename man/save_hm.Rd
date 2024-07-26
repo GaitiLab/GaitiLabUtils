@@ -6,8 +6,8 @@
 \usage{
 save_hm(
   hm_obj,
-  annotation_legend_side = "bottom",
-  heatmap_legend_side = "bottom",
+  annotation_legend_side = "right",
+  heatmap_legend_side = "right",
   merge_legend = TRUE,
   heatmap_legend_list = NULL,
   annotation_legend_list = NULL,
