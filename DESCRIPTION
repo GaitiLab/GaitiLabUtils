@@ -29,7 +29,9 @@ Imports:
     ggtext, 
     ComplexHeatmap, 
     knitr, 
-    Matrix
+    Matrix, 
+    ggsignif, 
+    lme4
 biocViews: ComplexHeatmap
 Config/renv/profiles/dev: 
     httpgd,
