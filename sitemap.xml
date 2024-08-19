@@ -2,6 +2,7 @@
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/404.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/authors.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/index.html</loc></url>
+<url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/LMM_test.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/auto_crop.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/compute_neighbor_metrics.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/compute_perm_pval.html</loc></url>
@@ -12,6 +13,7 @@
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/create_polygon.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/default_theme.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/generate_pairs.html</loc></url>
+<url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/geom_signif_lmm.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/get_cell_dims.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/get_cell_function.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/get_current_date.html</loc></url>
