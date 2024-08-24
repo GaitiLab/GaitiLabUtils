@@ -4,10 +4,12 @@
 \alias{create_hm}
 \title{Plot heatmap + save}
 \usage{
-create_hm(matrix, cell_width = 4, cell_height = 4, ...)
+create_hm(matrix, cell_width = 4, cell_height = 4, is_full = TRUE, ...)
 }
 \arguments{
 \item{matrix}{A matrix. Either numeric or character. If it is a simple vector, it will be converted to a one-column matrix.}
+
+\item{is_full}{plot full matrix (default = TRUE)}
 
 \item{mat}{matrix}
 

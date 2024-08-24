@@ -2,7 +2,7 @@
 % Please edit documentation in R/vis.R
 \name{get_optimal_output_size}
 \alias{get_optimal_output_size}
-\title{Obtain optimal ComplexHeatmap Size}
+\title{Determine optimal ComplexHeatmap size}
 \usage{
 get_optimal_output_size(hm, m = 4)
 }

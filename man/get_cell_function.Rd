@@ -2,17 +2,20 @@
 % Please edit documentation in R/vis.R
 \name{get_cell_function}
 \alias{get_cell_function}
-\title{Obtain optimal ComplexHeatmap Size}
+\title{Setup cell function for ComplexHeatmap}
 \usage{
 get_cell_function(matrix, is_upper_tri = FALSE, add_annot = TRUE)
 }
 \arguments{
 \item{matrix}{matrix to use}
 
-\item{is_upper_tri}{default=FALSE,}
-
 \item{add_annot}{default= TRUE}
+
+\item{is}{default=FALSE,}
 }
 \description{
-Obtain optimal ComplexHeatmap Size
+Setup cell function for ComplexHeatmap
+}
+\references{
+https://jokergoo.github.io/2021/07/22/make-triangle-heatmap/
 }

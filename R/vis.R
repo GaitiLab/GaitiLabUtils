@@ -7,7 +7,7 @@ auto_crop <- function(filename) {
     knitr::plot_crop(filename)
 }
 
-#' @title Obtain optimal ComplexHeatmap Size
+#' @title Determine optimal ComplexHeatmap size
 #' @description Obtain optimal size of heatmap or list of heatmaps
 #' @param hm heatmap or list of heatmaps
 #' @param m margin
@@ -29,17 +29,18 @@ get_optimal_output_size <- function(hm, m = 4) {
 }
 
 
-#' @title Obtain optimal ComplexHeatmap Size
+#' @title Setup cell function for ComplexHeatmap 
 #' @param matrix matrix to use
-#' @param is_upper_tri default=FALSE,
+#' @param is default=FALSE,
 #' @param add_annot default= TRUE
+#' @references https://jokergoo.github.io/2021/07/22/make-triangle-heatmap/
 #' @export
 get_cell_function <- function(matrix, is_upper_tri = FALSE, add_annot = TRUE) {
     # Full matrix
     cell_fun_annot <- function(j, i, x, y, width, height, fill) {
         grid.rect(
             x = x, y = y, width = width, height = height,
-            gp = gpar(col = "grey", fill = NA, lwd = 0.2)
+            gp = gpar(col = "grey", fill = fill, lwd = 0.2)
         )
         grid.text(matrix[i, j], x, y, gp = gpar(fontsize = 5))
     }
@@ -47,39 +48,26 @@ get_cell_function <- function(matrix, is_upper_tri = FALSE, add_annot = TRUE) {
     cell_fun_no_annot <- function(j, i, x, y, width, height, fill) {
         grid.rect(
             x = x, y = y, width = width, height = height,
-            gp = gpar(col = "grey", fill = NA, lwd = 0.2)
+            gp = gpar(col = "grey", fill = fill, lwd = 0.2)
         )
     }
 
     # Triangular
     cell_fun_tri_annot <- function(j, i, x, y, width, height, fill) {
-        if (i > j) {
-            grid.rect(
-                x = x,
-                y = y, width = width, height = height,
-                gp = gpar(col = NA, fill = NA, lwd = 0)
-            )
-        } else {
-            grid.rect(
-                x = x, y = y, width = width, height = height,
-                gp = gpar(col = "grey", fill = NA, lwd = 0.2)
-            )
-            grid.text(matrix[i, j], x, y, gp = gpar(fontsize = 5))
-        }
+        if (i <= j) {
+        grid.rect(
+            x = x, y = y, width = width, height = height,
+            gp = gpar(col = "grey", fill = fill, lwd = 0.2)
+        )            
+        grid.text(matrix[i, j], x, y, gp = gpar(fontsize = 5))
+        } 
     }
 
     cell_fun_tri_no_annot <- function(j, i, x, y, width, height, fill) {
-        if (i > j) {
+        if (i <= j) {
             grid.rect(
-                x = x,
-                y = y, width = width, height = height,
-                gp = gpar(col = NA, fill = NA, lwd = 0)
-            )
-        } else {
-            grid.rect(
-                x = x,
-                y = y, width = width, height = height,
-                gp = gpar(col = "grey", fill = NA, lwd = 0.2)
+                x = x, y = y, width = width, height = height,
+                gp = gpar(col = "grey", fill = fill, lwd = 0.2)
             )
         }
     }
@@ -155,7 +143,7 @@ save_hm <- function(
         )
     } else {
         # No legends provided
-        hm_obj <- draw(hm_obj)
+        hm_obj <- draw(hm_obj, heatmap_legend_side = heatmap_legend_side, annotation_legend_side = annotation_legend_side, merge_legend = merge_legend)
     }
     hm_size <- get_optimal_output_size(hm_obj)
     pdf(output_file, width = hm_size$width, height = hm_size$height)
@@ -169,26 +157,35 @@ save_hm <- function(
 #' @param output_file output file name
 #' @param legend_title legend title
 #' @param save_plot save plot
+#' @param is_full plot full matrix (default = TRUE)
 #' @return hm
 #' @export
-#' @importFrom ComplexHeatmap Heatmap draw
-#' @importFrom dplyr %>%
-#' @importFrom grid unit gpar grid.rect
-#' @importFrom plyr .
 #' @inheritParams ComplexHeatmap::Heatmap
 create_hm <- function(
     matrix,
     cell_width = 4,
     cell_height = 4,
+    is_full = TRUE,
     ...) {
     cell_dims <- get_cell_dims(matrix = matrix, cell_width = cell_width, cell_height = cell_height)
-    hm <- Heatmap(
+    if (is_full) {
+    hm <- ComplexHeatmap::Heatmap(
         matrix = matrix,
         # Size of cells (use square)
         height = cell_dims$height,
         width = cell_dims$width,
         ...
-    )
+    )} else { 
+        hm <- ComplexHeatmap::Heatmap(
+        matrix = matrix,
+        # Size of cells (use square)
+        height = cell_dims$height,
+        width = cell_dims$width,
+        rect_gp = gpar(type = "none"),
+        cluster_columns = FALSE, 
+        cluster_rows = FALSE,
+        ...)
+    }
     return(hm)
 }
 
