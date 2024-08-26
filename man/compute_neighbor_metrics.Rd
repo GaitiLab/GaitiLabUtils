@@ -16,6 +16,8 @@ compute_neighbor_metrics(
 \arguments{
 \item{approach}{'knn' or 'radius'}
 
+\item{dbscan_res}{results of dbscan}
+
 \item{group_varname}{variable containing your labels for the cell_ids, e.g. cell type}
 
 \item{df_with_labels}{dataframe with 'cell_ids' and your 'group_varname'}

@@ -7,19 +7,13 @@
 create_hm(matrix, cell_width = 4, cell_height = 4, is_full = TRUE, ...)
 }
 \arguments{
-\item{matrix}{A matrix. Either numeric or character. If it is a simple vector, it will be converted to a one-column matrix.}
+\item{matrix}{matrix}
+
+\item{cell_width}{height of cell in mm, default=0.1 (square)}
+
+\item{cell_height}{width of cell in mm, default=0.1 (square)}
 
 \item{is_full}{plot full matrix (default = TRUE)}
-
-\item{mat}{matrix}
-
-\item{col_fun}{color function}
-
-\item{output_file}{output file name}
-
-\item{legend_title}{legend title}
-
-\item{save_plot}{save plot}
 }
 \value{
 hm

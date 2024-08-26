@@ -9,7 +9,9 @@ get_cell_dims(matrix, cell_width = 0.1, cell_height = 0.1)
 \arguments{
 \item{matrix}{matrix}
 
-\item{cell_width}{width of cell in mm, default=0.1 (square)}
+\item{cell_width}{height of cell in mm, default=0.1 (square)}
+
+\item{cell_height}{width of cell in mm, default=0.1 (square)}
 }
 \value{
 list with height and width

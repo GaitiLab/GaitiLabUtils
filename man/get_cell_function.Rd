@@ -9,9 +9,9 @@ get_cell_function(matrix, is_upper_tri = FALSE, add_annot = TRUE)
 \arguments{
 \item{matrix}{matrix to use}
 
-\item{add_annot}{default= TRUE}
+\item{is_upper_tri}{default=FALSE,}
 
-\item{is}{default=FALSE,}
+\item{add_annot}{default= TRUE}
 }
 \description{
 Setup cell function for ComplexHeatmap

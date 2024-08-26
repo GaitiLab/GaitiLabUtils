@@ -27,13 +27,13 @@ geom_signif_lmm(
 
 \item{comparisons}{list of vectors of length two that define the comparisons to make}
 
-\item{y_position}{position of brackets}
+\item{y_position}{position of brackets (default=NULL)}
 
-\item{tip_length}{length of bracket tips}
+\item{tip_length}{length of bracket tips (default = 0.03)}
 
-\item{size}{size of brackets}
+\item{size}{size of brackets (default = 0.5)}
 
-\item{step_increase}{distance between brackets}
+\item{step_increase}{distance between brackets (default = 0)}
 }
 \value{
 geom signif

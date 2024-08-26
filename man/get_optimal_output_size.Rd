@@ -9,7 +9,7 @@ get_optimal_output_size(hm, m = 4)
 \arguments{
 \item{hm}{heatmap or list of heatmaps}
 
-\item{m}{margin}
+\item{m}{margin (default = 4)}
 }
 \value{
 list of height and width

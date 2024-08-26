@@ -31,7 +31,8 @@ Imports:
     knitr, 
     Matrix, 
     ggsignif, 
-    lme4
+    lme4,
+    R.utils
 biocViews: ComplexHeatmap
 Config/renv/profiles/dev: 
     httpgd,
@@ -46,7 +47,8 @@ Config/renv/profiles/dev:
     pkgdown
 URL: https://gaitilab.github.io/GaitiLabUtils/
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    circlize
 Config/testthat/edition: 3
 Remotes:
     cran/Matrix@1.6-5,

@@ -92,7 +92,6 @@ visualize_transcripts <- function(gene = NULL, transcripts, n_bins = 100, output
     return(p)
 }
 
-
 #' @title create polygons
 #' @param x cell_id
 #' @param cell_boundaries dataframe with at least the required columns: 'vertex_x', 'vertex_y' and 'cell_id'

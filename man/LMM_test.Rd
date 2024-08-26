@@ -2,7 +2,7 @@
 % Please edit documentation in R/stats.R
 \name{LMM_test}
 \alias{LMM_test}
-\title{perform a nested t-test using LMMs.}
+\title{Perform a nested t-test using LMMs.}
 \usage{
 LMM_test(data_df, response, condition, latent_vars)
 }
@@ -19,5 +19,5 @@ LMM_test(data_df, response, condition, latent_vars)
 p-value derived from likelihood ratio test of model incorporating condition vs null model
 }
 \description{
-perform a nested t-test using LMMs.
+Perform a nested t-test using LMMs.
 }
