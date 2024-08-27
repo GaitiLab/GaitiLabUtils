@@ -1,9 +1,11 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/404.html</loc></url>
+<url><loc>https://gaitilab.github.io/GaitiLabUtils/LICENSE.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/authors.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/index.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/LMM_test.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/auto_crop.html</loc></url>
+<url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/build_adjacency_table.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/compute_neighbor_metrics.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/compute_perm_pval.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/compute_shuffled_autocorr.html</loc></url>
@@ -12,6 +14,9 @@
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/create_lookup_table.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/create_polygon.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/default_theme.html</loc></url>
+<url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/find_neighbouring_spots.html</loc></url>
+<url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/find_neighbours_in_window.html</loc></url>
+<url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/find_neighbours_in_window_around_spot.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/generate_pairs.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/geom_signif_lmm.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/get_cell_dims.html</loc></url>
@@ -25,6 +30,7 @@
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/init_logging.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/inspect_k_nearest_neighbors.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/inspect_neighbors.html</loc></url>
+<url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/jaccard_similarity.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/log_debug.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/log_error.html</loc></url>
 <url><loc>https://gaitilab.github.io/GaitiLabUtils/reference/log_fatal.html</loc></url>
