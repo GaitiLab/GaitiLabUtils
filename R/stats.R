@@ -48,3 +48,14 @@ LMM_test <- function(data_df, response, condition, latent_vars) {
     # Return the p-value from the Chi-square test
     return(res$`Pr(>Chisq)`[2])
 }
+
+#' @title Compute Jaccard similarity
+#' @param vec1 vector
+#' @param vec2 vector
+#' @return jaccard similarity
+#' @export
+jaccard_similarity <- function(vec1, vec2) {
+    intersection <- length(intersect(vec1, vec2))
+    union <- length(unique(c(vec1, vec2)))
+    return(intersection / union)
+}
