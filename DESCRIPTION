@@ -1,10 +1,25 @@
 Package: GaitiLabUtils
-Title: General utility functions for R-projects. 
-Version: 0.0.0.9000
-Authors@R:
-    person("Joan", "Kant", email = "Joan.Kant@uhn.ca", role = c("cre"),
-           comment = c(ORCID = "0009-0007-1837-5854"))
-Description: Package containing helper functions in the GBM project.
+Title: General (utility) functions for R-projects. 
+Version: 1.0.0
+Authors@R: c(
+    person(
+        given = "Joan", 
+        family = "Kant", 
+        email = "Joan.Kant@uhn.ca", 
+        role = c("cre"),
+        comment = c(ORCID = "0009-0007-1837-5854")), 
+    person(
+        given = "Benson", 
+        family = "Wu", 
+        role = c("aut")
+    ), 
+    person(
+        given = "Yiyan", 
+        family = "Wu", 
+        role = c("aut")
+    )        
+    )
+Description: Package containing functions that can be used in various contexts, developed for in-house use.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
