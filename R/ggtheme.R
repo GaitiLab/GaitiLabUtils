@@ -3,7 +3,8 @@
 #' @param base_family Base font family (default = "Helvetica")
 #' @return ggplot2 theme
 #' @export
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' import(ggplot2)
 #' ggplot(data = data, aes(x = x, y = y)) +
 #'     geom_point() +
