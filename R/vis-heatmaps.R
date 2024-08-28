@@ -105,13 +105,14 @@ save_hm <- function(
     heatmap_legend_side = "right",
     merge_legend = TRUE,
     heatmap_legend_list = NULL,
-    annotation_legend_list = NULL, output_file = "heatmap.pdf") {
+    annotation_legend_list = NULL,
+    output_file = "heatmap.pdf") {
     # Only heatmap legends
     if (!is.null(heatmap_legend_list) & is.null(annotation_legend_list)) {
         hm_obj <- ComplexHeatmap::draw(hm_obj,
             merge_legend = merge_legend,
-            annotation_legend_side = annotation_legend_side,
-            annotation_legend_list = annotation_legend_list,
+            heatmap_legend_list = heatmap_legend_list,
+            heatmap_legend_side = heatmap_legend_side,
         )
         # Only annotation legend
     } else if ((is.null(heatmap_legend_list) & !is.null(annotation_legend_list))) {
