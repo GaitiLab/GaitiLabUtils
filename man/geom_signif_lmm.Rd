@@ -42,8 +42,10 @@ geom signif
 geom signif with lmm test. See geom_signif from ggsignif for more information
 }
 \examples{
-\dontrun {
+\dontrun{
 comparisons <- list(c("condition1", "condition2"), c("condition2", "condition3"))
-p <- ggplot(data = data_df, aes(x = condition, y = response, fill = condition)) + geom_boxplot() + geom_signif_lmm(data_df = data_df, response = "response", condition = "condition", latent_vars = "Patient", comparisons = comps, steps_increase = c(0, 0.1, 0.1))
+p <- ggplot(data = data_df, aes(x = condition, y = response, fill = condition)) +
+    geom_boxplot() +
+    geom_signif_lmm(data_df = data_df, response = "response", condition = "condition", latent_vars = "Patient", comparisons = comps, steps_increase = c(0, 0.1, 0.1))
 }
 }
