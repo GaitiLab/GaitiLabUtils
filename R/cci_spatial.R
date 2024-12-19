@@ -54,7 +54,7 @@ inspect_k_nearest_neighbors <- function(cell_id, nn_id_mat, group_varname, df_wi
 #' @title Compute neighbor metrics
 #' @description Determine the number of neighbors per cell type for a cell of interest
 #' @param approach 'knn' or 'radius'
-#' @param dbscan_res results of dbscan 
+#' @param dbscan_res results of dbscan
 #' @param cell_id cell_id for which you want to assess its neighbors
 #' @param group_varname variable containing your labels for the cell_ids, e.g. cell type
 #' @param df_with_labels dataframe with 'cell_ids' and your 'group_varname'

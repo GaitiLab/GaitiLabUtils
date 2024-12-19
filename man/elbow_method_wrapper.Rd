@@ -4,14 +4,24 @@
 \alias{elbow_method_wrapper}
 \title{Perform Elbow method}
 \usage{
-elbow_method_wrapper(seurat_object, ndims = 50, reduction = "pca")
+elbow_method_wrapper(
+  seurat_object,
+  assay = "RNA",
+  ndims = 50,
+  reduction = "pca",
+  var = 0.05
+)
 }
 \arguments{
 \item{seurat_object}{seurat object}
 
+\item{assay}{assay to use in Seurat object (default = 'RNA')}
+
 \item{ndims}{Number of PCs to plot (default = 50)}
 
 \item{reduction}{reduction to use for ElbowPlot (default = 'pca')}
+
+\item{var}{Last point where change of \% of variation is more than X\%}
 }
 \value{
 list with plot and number of optimal npcs
