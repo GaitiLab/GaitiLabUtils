@@ -23,7 +23,7 @@ create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
         if (sum(has_script_filepath)) {
             # Use filename from current as log_file name if run from terminal
             log_file <- tools::file_path_sans_ext(
-                basename(unlist(strsplit(cmd_args[has_script_filepath], "=")))
+                basename(unlist(strsplit(cmd_args[has_script_filepath], "="))[2])
             )
         }
     }
