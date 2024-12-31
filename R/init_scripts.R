@@ -12,6 +12,7 @@ set_wd <- function() {
 #' @description Create a logfile path of format <log_dir>/<timestamp>__<log_file>.log
 #' @param log_file (default = 'log')
 #' @param log_dir (default = 'logs')
+#' @return string with path to logfile that needs to be created
 #' @export
 create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
     if ((is.null(log_file)) && (interactive())) {
@@ -41,7 +42,9 @@ create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
 #' Set up a default argument parser, with two default arguments: log_level and output_dir
 #' @title initialize argparser
 #' @param description Description for script
-#' @param output_default Default output directory
+#' @param default_output Default output directory
+#' @param default_log_file name of logfile without extension (default=NULL)
+#' @param default_log_dir directory where logfile needs to be saved (default="logs")
 #' @return parser object
 #'
 #' @examples
@@ -50,7 +53,7 @@ create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
 #' }
 #' @importFrom argparse ArgumentParser
 #' @export
-setup_default_argparser <- function(description = "", default_output = "output") {
+setup_default_argparser <- function(description = "", default_output = "output", default_log_file = NULL, default_log_dir = "logs") {
     parser <- argparse::ArgumentParser(
         description = description, python_cmd = NULL
     )
@@ -62,6 +65,13 @@ setup_default_argparser <- function(description = "", default_output = "output")
     parser$add_argument("-o", "--output_dir",
         type = "character",
         default = default_output, help = "Directory to save output"
+    )
+    parser$add_argument("--log_file",
+        type = "character", default = default_log_file, help = "Name of logfile without extension (default=NULL)"
+    )
+    parser$add_argument("--log_dir",
+        type = "character",
+        default = default_log_dir, help = "Directory where logfile needs to be saved (default='logs')"
     )
     return(parser)
 }
