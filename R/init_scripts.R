@@ -1,11 +1,39 @@
 #' @title Set working directory automatically
 #' @export
 set_wd <- function() {
-  cmd_args <- commandArgs(trailingOnly = FALSE)
-  has_script_filepath <- startsWith(cmd_args, "--file=")
-  if (sum(has_script_filepath)) {
-    setwd(dirname(unlist(strsplit(cmd_args[has_script_filepath], "=")))[2])
-  }
+    cmd_args <- commandArgs(trailingOnly = FALSE)
+    has_script_filepath <- startsWith(cmd_args, "--file=")
+    if (sum(has_script_filepath)) {
+        setwd(dirname(unlist(strsplit(cmd_args[has_script_filepath], "=")))[2])
+    }
+}
+
+#' @title Create timestamped logfile path
+#' @description Create a logfile path of format <log_dir>/<timestamp>__<log_file>.log
+#' @param log_file (default = 'log')
+#' @param log_dir (default = 'logs')
+#' @export
+create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
+    if ((is.null(log_file)) && (interactive())) {
+        stop("Please use a valid filename...")
+    } else if (!interactive() && is.null(log_file)) {
+        cmd_args <- commandArgs(trailingOnly = FALSE)
+        has_script_filepath <- startsWith(cmd_args, "--file=")
+        if (sum(has_script_filepath)) {
+            # Use filename from current as log_file name if run from terminal
+            log_file <- tools::file_path_sans_ext(
+                basename(unlist(strsplit(cmd_args[has_script_filepath], "=")))
+            )
+        }
+    }
+    return(file.path(log_dir, paste0(
+        # Add a timestamp as prefix for filename
+        format(
+            lubridate::now(),
+            "%Y%m%d_%H%M%S__"
+        ),
+        glue::glue("{log_file}.log")
+    )))
 }
 
 #' Setup default argparser
@@ -23,19 +51,19 @@ set_wd <- function() {
 #' @importFrom argparse ArgumentParser
 #' @export
 setup_default_argparser <- function(description = "", default_output = "output") {
-  parser <- argparse::ArgumentParser(
-    description = description, python_cmd = NULL
-  )
-  parser$add_argument("-ll", "--log_level",
-    type = "integer",
-    default = "4",
-    help = "Log level: 1=FATAL, 2=ERROR, 3=WARN, 4=INFO, 5=DEBUG"
-  )
-  parser$add_argument("-o", "--output_dir",
-    type = "character",
-    default = default_output, help = "Directory to save output"
-  )
-  return(parser)
+    parser <- argparse::ArgumentParser(
+        description = description, python_cmd = NULL
+    )
+    parser$add_argument("-ll", "--log_level",
+        type = "integer",
+        default = "4",
+        help = "Log level: 1=FATAL, 2=ERROR, 3=WARN, 4=INFO, 5=DEBUG"
+    )
+    parser$add_argument("-o", "--output_dir",
+        type = "character",
+        default = default_output, help = "Directory to save output"
+    )
+    return(parser)
 }
 
 #' @title Set up logging
@@ -50,25 +78,25 @@ setup_default_argparser <- function(description = "", default_output = "output")
 #' @export
 #' @importFrom log4r console_appender default_log_layout logger
 init_logging <- function(log_level = 5, log_file = NULL) {
-  log_level_options <- c(
-    `1` = "FATAL", `2` = "ERROR", `3` = "WARN", `4` = "INFO",
-    `5` = "DEBUG"
-  )
-  if (!is.null(log_file)) {
-    console_appender <- log4r::console_appender(layout = log4r::default_log_layout())
-    file_appender <- log4r::file_appender(log_file,
-      append = FALSE,
-      layout = log4r::default_log_layout()
+    log_level_options <- c(
+        `1` = "FATAL", `2` = "ERROR", `3` = "WARN", `4` = "INFO",
+        `5` = "DEBUG"
     )
+    if (!is.null(log_file)) {
+        console_appender <- log4r::console_appender(layout = log4r::default_log_layout())
+        file_appender <- log4r::file_appender(log_file,
+            append = FALSE,
+            layout = log4r::default_log_layout()
+        )
+        return(log4r::logger(
+            threshold = log_level_options[as.character(log_level)],
+            appenders = list(console_appender, file_appender)
+        ))
+    }
     return(log4r::logger(
-      threshold = log_level_options[as.character(log_level)],
-      appenders = list(console_appender, file_appender)
+        threshold = log_level_options[as.character(log_level)],
+        appenders = log4r::console_appender(layout = log4r::default_log_layout())
     ))
-  }
-  return(log4r::logger(
-    threshold = log_level_options[as.character(log_level)],
-    appenders = log4r::console_appender(layout = log4r::default_log_layout())
-  ))
 }
 
 #' @title Logging functions: log_info
@@ -82,7 +110,7 @@ init_logging <- function(log_level = 5, log_file = NULL) {
 #' @export
 #' @importFrom log4r console_appender default_log_layout logger
 log_info <- function(...) {
-  log4r::info(logr, paste0(...))
+    log4r::info(logr, paste0(...))
 }
 
 #' @title Logging functions: log_error
@@ -96,7 +124,7 @@ log_info <- function(...) {
 #' @importFrom log4r console_appender default_log_layout logger
 #' @export
 log_error <- function(...) {
-  log4r::error(logr, paste0(...))
+    log4r::error(logr, paste0(...))
 }
 
 #' @title Logging functions: log_fatal
@@ -111,7 +139,7 @@ log_error <- function(...) {
 #' @importFrom log4r console_appender default_log_layout logger
 #' @export
 log_fatal <- function(...) {
-  log4r::fatal(logr, paste0(...))
+    log4r::fatal(logr, paste0(...))
 }
 
 #' @title Logging functions: log_debug
@@ -124,7 +152,7 @@ log_fatal <- function(...) {
 #' @importFrom log4r console_appender default_log_layout logger
 #' @export
 log_debug <- function(...) {
-  log4r::debug(logr, paste0(...))
+    log4r::debug(logr, paste0(...))
 }
 
 #' @title Logging functions: log.warn
@@ -139,5 +167,5 @@ log_debug <- function(...) {
 #' @importFrom log4r console_appender default_log_layout logger
 
 log_warn <- function(...) {
-  log4r::warn(logr, paste0(...))
+    log4r::warn(logr, paste0(...))
 }
