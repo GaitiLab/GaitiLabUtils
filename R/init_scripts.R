@@ -109,6 +109,35 @@ init_logging <- function(log_level = 5, log_file = NULL) {
     ))
 }
 
+
+#' @title Set up object logging
+#' @param log_file path to log file (optional)
+#' @return logger object
+#'
+#' @examples
+#' \dontrun{
+#' logobj <- init_obj_logger()
+#' }
+#' @export
+#' @importFrom log4r console_appender bare_log_layout logger
+init_obj_logging <- function(log_file = NULL) {
+    if (!is.null(log_file)) {
+        log_object_appender <- log4r::file_appender(log_file,
+            append = TRUE,
+            layout = bare_log_layout()
+        )
+
+        return(log4r::logger(
+            threshold = 1,
+            appenders = list(log_object_appender)
+        ))
+    }
+    return(log4r::logger(
+        threshold = 1,
+        appenders = log4r::console_appender(layout = bare_log_layout())
+    ))
+}
+
 #' @title Logging functions: log_info
 #'
 #' @param ... message
@@ -178,4 +207,14 @@ log_debug <- function(...) {
 
 log_warn <- function(...) {
     log4r::warn(logr, paste0(...))
+}
+
+#' @title Log an object
+#' @param ... message
+#' @export
+log_object <- function(...) {
+    log4r::info(obj_logger, paste0("\n"))
+    log4r::info(obj_logger, paste0(capture.output(print(...)), "\n"))
+    log4r::info(obj_logger, paste0("\n"))
+    print(...)
 }

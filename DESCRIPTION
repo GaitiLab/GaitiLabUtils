@@ -1,6 +1,6 @@
 Package: GaitiLabUtils
 Title: General (utility) functions for R-projects. 
-Version: 1.1.0
+Version: 1.2.0
 Authors@R: c(
     person(
         given = "Joan", 
