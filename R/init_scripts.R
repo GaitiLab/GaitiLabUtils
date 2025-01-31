@@ -1,10 +1,17 @@
 #' @title Set working directory automatically
 #' @export
 set_wd <- function() {
+  	# Default to repo directory in interactive mode, where .git is
+    if (interactive()) {
+        return(here::here())
+    }
     cmd_args <- commandArgs(trailingOnly = FALSE)
     has_script_filepath <- startsWith(cmd_args, "--file=")
     if (sum(has_script_filepath)) {
-        setwd(dirname(unlist(strsplit(cmd_args[has_script_filepath], "=")))[2])
+        setwd(dirname(unlist(strsplit(
+            cmd_args[has_script_filepath],
+            "="
+        )))[2])
     }
 }
 
