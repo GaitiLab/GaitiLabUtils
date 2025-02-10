@@ -18,7 +18,7 @@ default_theme <- function(base_size = 14, base_family = "Helvetica") {
         ggplot2::theme(
             # Plot
             plot.title = ggtext::element_markdown(
-                face = "bold", size = ggplot2::rel(1.2),
+                face = "plain", size = ggplot2::rel(1.2),
                 hjust = 0.5
             ),
             plot.background = ggplot2::element_rect(colour = NA),
@@ -57,7 +57,7 @@ default_theme <- function(base_size = 14, base_family = "Helvetica") {
                 fill = "#ffffff"
             ),
             strip.text = ggtext::element_markdown(
-                face = "bold",
+                face = "plain",
                 size = ggplot2::rel(1.1)
             )
         ))
