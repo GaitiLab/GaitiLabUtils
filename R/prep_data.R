@@ -11,7 +11,7 @@ elbow_method_wrapper <- function(
     ndims = 50, reduction = "pca", var = 0.05) {
     Seurat::DefaultAssay(seurat_object) <- assay
     message("Determine number of optimal PCs...")
-    npcs <- min(get_pcs(seurat_object, reduc = reduction, var = var))
+    npcs <- get_pcs(seurat_object, reduc = reduction, var = var)
     p <- Seurat::ElbowPlot(seurat_object,
         ndims = ndims, reduction = reduction
     ) +
