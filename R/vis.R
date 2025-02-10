@@ -30,13 +30,16 @@ auto_crop <- function(filename) {
 #' @importFrom dplyr %>%
 geom_signif_lmm <- function(
     data_df, response, condition, latent_vars,
-    comparisons, y_position = NULL, tip_length = 0.03, size = 0.5, step_increase = 0) {
+    comparisons, y_position = NULL,
+    tip_length = 0.03, size = 0.5, step_increase = 0) {
     p_vals <- sapply(seq_along(comparisons), function(comp) {
         curr_comparison <- comparisons[[comp]]
         curr_df <- data_df %>%
             filter(!!rlang::sym(condition) %in% curr_comparison)
 
-        return(round(LMM_test(curr_df, response, condition, latent_vars), digits = 5))
+        return(round(LMM_test(curr_df, response, condition, latent_vars),
+            digits = 5
+        ))
     })
 
     return(

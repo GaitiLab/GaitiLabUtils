@@ -17,7 +17,7 @@ set_wd <- function() {
 }
 
 #' @title Create timestamped logfile path
-#' @description Create a logfile path of format <log_dir>/<timestamp>__<log_file>.log
+#' @description Create a logfile path of format <log_dir>/<timestamp>__<log_file>.log #nolint
 #' @param log_file (default = 'log')
 #' @param log_dir (default = 'logs')
 #' @return string with path to logfile that needs to be created
@@ -31,7 +31,9 @@ create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
         if (sum(has_script_filepath)) {
             # Use filename from current as log_file name if run from terminal
             log_file <- tools::file_path_sans_ext(
-                basename(unlist(strsplit(cmd_args[has_script_filepath], "="))[2])
+                basename(
+                    unlist(strsplit(cmd_args[has_script_filepath], "="))[2]
+                )
             )
         }
     }
@@ -61,7 +63,11 @@ create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
 #' }
 #' @importFrom argparse ArgumentParser
 #' @export
-setup_default_argparser <- function(description = "", default_output = "output", default_log_file = NULL, default_log_dir = "logs") {
+setup_default_argparser <- function(
+    description = "",
+    default_output = "output",
+    default_log_file = NULL,
+    default_log_dir = "logs") {
     parser <- argparse::ArgumentParser(
         description = description, python_cmd = NULL
     )
@@ -75,11 +81,13 @@ setup_default_argparser <- function(description = "", default_output = "output",
         default = default_output, help = "Directory to save output"
     )
     parser$add_argument("--log_file",
-        type = "character", default = default_log_file, help = "Name of logfile without extension (default=NULL)"
+        type = "character", default = default_log_file,
+        help = "Name of logfile without extension (default=NULL)"
     )
     parser$add_argument("--log_dir",
         type = "character",
-        default = default_log_dir, help = "Directory where logfile needs to be saved (default='logs')"
+        default = default_log_dir,
+        help = "Directory where logfile needs to be saved (default='logs')"
     )
     return(parser)
 }
@@ -101,7 +109,9 @@ init_logging <- function(log_level = 5, log_file = NULL) {
         `5` = "DEBUG"
     )
     if (!is.null(log_file)) {
-        console_appender <- log4r::console_appender(layout = log4r::default_log_layout())
+        console_appender <- log4r::console_appender(
+            layout = log4r::default_log_layout()
+        )
         file_appender <- log4r::file_appender(log_file,
             append = FALSE,
             layout = log4r::default_log_layout()
@@ -113,7 +123,9 @@ init_logging <- function(log_level = 5, log_file = NULL) {
     }
     return(log4r::logger(
         threshold = log_level_options[as.character(log_level)],
-        appenders = log4r::console_appender(layout = log4r::default_log_layout())
+        appenders = log4r::console_appender(
+            layout = log4r::default_log_layout()
+        )
     ))
 }
 

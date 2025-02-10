@@ -15,5 +15,5 @@ create_timestamped_logfile(log_file = NULL, log_dir = "logs")
 string with path to logfile that needs to be created
 }
 \description{
-Create a logfile path of format <log_dir>/\if{html}{\out{<timestamp>}}__<log_file>.log
+Create a logfile path of format <log_dir>/\if{html}{\out{<timestamp>}}__<log_file>.log #nolint
 }
