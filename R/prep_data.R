@@ -3,7 +3,7 @@
 #' @param assay assay to use in Seurat object (default = 'RNA')
 #' @param ndims Number of PCs to plot (default = 50)
 #' @param reduction reduction to use for ElbowPlot (default = 'pca')
-#' @param var Last point where change of % of variation is more than X%
+#' @param change_of_variation_perc Last point where change of % of variation is more than X%
 #' @returns list with plot and number of optimal npcs
 #' @export
 elbow_method_wrapper <- function(
@@ -11,7 +11,10 @@ elbow_method_wrapper <- function(
     ndims = 50, reduction = "pca", var = 0.05) {
     Seurat::DefaultAssay(seurat_object) <- assay
     message("Determine number of optimal PCs...")
-    npcs <- get_pcs(seurat_object, reduc = reduction, var = var)
+    npcs <- get_pcs(seurat_object,
+        reduc = reduction,
+        change_of_variation_perc = var, method = "elbow"
+    )
     p <- Seurat::ElbowPlot(seurat_object,
         ndims = ndims, reduction = reduction
     ) +

@@ -21,7 +21,7 @@ elbow_method_wrapper(
 
 \item{reduction}{reduction to use for ElbowPlot (default = 'pca')}
 
-\item{var}{Last point where change of \% of variation is more than X\%}
+\item{change_of_variation_perc}{Last point where change of \% of variation is more than X\%}
 }
 \value{
 list with plot and number of optimal npcs
