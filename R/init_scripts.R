@@ -1,18 +1,12 @@
 #' @title Set working directory automatically
 #' @export
 set_wd <- function() {
-    # Default to repo directory in interactive mode, where .git is
-    if (interactive()) {
-        setwd(here::here())
-    } else {
-        cmd_args <- commandArgs(trailingOnly = FALSE)
-        has_script_filepath <- startsWith(cmd_args, "--file=")
-        if (sum(has_script_filepath)) {
-            setwd(dirname(unlist(strsplit(
-                cmd_args[has_script_filepath],
-                "="
-            )))[2])
-        }
+    # Assuming project folder is a git/gitub repo or is an Rproject
+    setwd(here::here())
+    wd_path <- getwd()
+    if (stringr::str_detect(basename(wd_path), "script?(s)")) {
+        # if wd is a folder called Rscripts/scripts, then use the parent directory as working directory
+        setwd(dirname(wd_path))
     }
 }
 
