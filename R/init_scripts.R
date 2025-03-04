@@ -93,7 +93,7 @@ init_logging <- function(log_level = 5, log_file = NULL) {
         `5` = "DEBUG"
     )
     if (!is.null(log_file)) {
-        create_dir(log_file)
+        create_dir(dirname(log_file))
         console_appender <- log4r::console_appender(
             layout = log4r::default_log_layout()
         )
@@ -127,7 +127,7 @@ init_logging <- function(log_level = 5, log_file = NULL) {
 #' @importFrom log4r console_appender bare_log_layout logger
 init_obj_logging <- function(log_file = NULL) {
     if (!is.null(log_file)) {
-        create_dir(log_file)
+        create_dir(dirname(log_file))
         log_object_appender <- log4r::file_appender(log_file,
             append = TRUE,
             layout = bare_log_layout()
