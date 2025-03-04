@@ -10,35 +10,25 @@ set_wd <- function() {
     }
 }
 
-#' @title Create timestamped logfile path
-#' @description Create a logfile path of format <log_dir>/<timestamp>__<log_file>.log #nolint
-#' @param log_file (default = 'log')
-#' @param log_dir (default = 'logs')
-#' @return string with path to logfile that needs to be created
+#' @title Generate name for log
+#' @description Generate name for logfile either returning default <timestamp>__log.log or <timestamp>__<Rscript>.log if run from command line
+#' @param logfile_name filename to save log, without file extension (default=NULL)
+#' @return string with filename
 #' @export
-create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
-    if ((is.null(log_file)) && (interactive())) {
-        stop("Please use a valid filename...")
-    } else if (!interactive() && is.null(log_file)) {
+generate_logfile_name <- function(logfile_name = NULL) {
+    if (!is.null(logfile_name)) {
+        return(paste0(format(lubridate::now(), "%Y%m%d_%H%M%S__"), logfile_name, ".log"))
+    } else if (interactive()) {
+        return(format(lubridate::now(), "%Y%m%d_%H%M%S__log.log"))
+    } else {
+        # If run from the command line use name of Rscript as basename for logfile
         cmd_args <- commandArgs(trailingOnly = FALSE)
         has_script_filepath <- startsWith(cmd_args, "--file=")
-        if (sum(has_script_filepath)) {
-            # Use filename from current as log_file name if run from terminal
-            log_file <- tools::file_path_sans_ext(
-                basename(
-                    unlist(strsplit(cmd_args[has_script_filepath], "="))[2]
-                )
-            )
-        }
+        script_filepath <- cmd_args[has_script_filepath]
+        # remove extension from name
+        scriptname <- get_name(stringr::str_remove(script_filepath, "--file="))
+        return(paste0(format(lubridate::now(), "%Y%m%d_%H%M%S__"), scriptname, ".log"))
     }
-    return(file.path(log_dir, paste0(
-        # Add a timestamp as prefix for filename
-        format(
-            lubridate::now(),
-            "%Y%m%d_%H%M%S__"
-        ),
-        glue::glue("{log_file}.log")
-    )))
 }
 
 #' Setup default argparser
@@ -46,9 +36,9 @@ create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
 #' Set up a default argument parser, with two default arguments: log_level and output_dir
 #' @title initialize argparser
 #' @param description Description for script
-#' @param default_output Default output directory
+#' @param default_output Default output directory (default="output")
 #' @param default_log_file name of logfile without extension (default=NULL)
-#' @param default_log_dir directory where logfile needs to be saved (default="logs")
+#' @param default_log_dir directory where logfile needs to be saved (default="output")
 #' @return parser object
 #'
 #' @examples
@@ -59,9 +49,9 @@ create_timestamped_logfile <- function(log_file = NULL, log_dir = "logs") {
 #' @export
 setup_default_argparser <- function(
     description = "",
-    default_output = "output",
+    default_output_dir = "output",
     default_log_file = NULL,
-    default_log_dir = "logs") {
+    default_log_dir = "output") {
     parser <- argparse::ArgumentParser(
         description = description, python_cmd = NULL
     )
@@ -72,7 +62,7 @@ setup_default_argparser <- function(
     )
     parser$add_argument("-o", "--output_dir",
         type = "character",
-        default = default_output, help = "Directory to save output"
+        default = default_output_dir, help = "Directory to save output"
     )
     parser$add_argument("--log_file",
         type = "character", default = default_log_file,
@@ -81,7 +71,7 @@ setup_default_argparser <- function(
     parser$add_argument("--log_dir",
         type = "character",
         default = default_log_dir,
-        help = "Directory where logfile needs to be saved (default='logs')"
+        help = "Directory where logfile needs to be saved (default='output')"
     )
     return(parser)
 }

@@ -4,10 +4,12 @@
 \alias{create_dir}
 \title{Create directory}
 \usage{
-create_dir(dir_path)
+create_dir(dir_path, verbose = TRUE)
 }
 \arguments{
 \item{dir_path}{Path to directory to be created}
+
+\item{verbose}{log messages}
 }
 \description{
 Create directory if it does not exist

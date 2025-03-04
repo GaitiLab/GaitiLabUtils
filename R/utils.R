@@ -1,19 +1,23 @@
 #' @title Create directory
 #' @description Create directory if it does not exist
 #' @param dir_path Path to directory to be created
-#'
+#' @param verbose log messages
 #' @examples
 #' \dontrun{
 #' create_dir("/Users/johndoe/my_new_dir")
 #' }
 #' @export
 #' @importFrom glue glue
-create_dir <- function(dir_path) {
+create_dir <- function(dir_path, verbose = TRUE) {
     if (!dir.exists(dir_path)) {
-        message(glue::glue("Creating directory {dir_path}"))
+        if (verbose) {
+            message(glue::glue("Creating directory {dir_path}"))
+        }
         dir.create(dir_path, recursive = TRUE)
     } else {
-        message(glue::glue("Directory {dir_path} already exists."))
+        if (verbose) {
+            message(glue::glue("Directory {dir_path} already exists."))
+        }
     }
 }
 

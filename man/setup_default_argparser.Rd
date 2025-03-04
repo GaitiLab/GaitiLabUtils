@@ -6,19 +6,19 @@
 \usage{
 setup_default_argparser(
   description = "",
-  default_output = "output",
+  default_output_dir = "output",
   default_log_file = NULL,
-  default_log_dir = "logs"
+  default_log_dir = "output"
 )
 }
 \arguments{
 \item{description}{Description for script}
 
-\item{default_output}{Default output directory}
-
 \item{default_log_file}{name of logfile without extension (default=NULL)}
 
-\item{default_log_dir}{directory where logfile needs to be saved (default="logs")}
+\item{default_log_dir}{directory where logfile needs to be saved (default="output")}
+
+\item{default_output}{Default output directory (default="output")}
 }
 \value{
 parser object
