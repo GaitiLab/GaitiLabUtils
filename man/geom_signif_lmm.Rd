@@ -9,11 +9,13 @@ geom_signif_lmm(
   response,
   condition,
   latent_vars,
-  comparisons,
+  method = "nested_t_test",
+  comparisons = NULL,
   y_position = NULL,
   tip_length = 0.03,
   size = 0.5,
-  step_increase = 0
+  step_increase = 0,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -25,27 +27,23 @@ geom_signif_lmm(
 
 \item{latent_vars}{vector containing columns in data_df that correspond to variables that describe the nested structure of the data e.g. Patient}
 
-\item{comparisons}{list of vectors of length two that define the comparisons to make}
+\item{method}{one of the following 'nested_t_test' or 'mixed_effects_anova' (default="nested_t_test")}
+
+\item{comparisons}{list of vectors of length two that define the comparisons to make (default=NULL)}
 
 \item{y_position}{position of brackets (default=NULL)}
 
-\item{tip_length}{length of bracket tips (default = 0.03)}
+\item{tip_length}{length of bracket tips (default=0.03)}
 
-\item{size}{size of brackets (default = 0.5)}
+\item{size}{size of brackets (default=0.5)}
 
-\item{step_increase}{distance between brackets (default = 0)}
+\item{step_increase}{distance between brackets (default=0)}
+
+\item{verbose}{(default=TRUE)}
 }
 \value{
 geom signif
 }
 \description{
 geom signif with lmm test. See geom_signif from ggsignif for more information
-}
-\examples{
-\dontrun{
-comparisons <- list(c("condition1", "condition2"), c("condition2", "condition3"))
-p <- ggplot(data = data_df, aes(x = condition, y = response, fill = condition)) +
-    geom_boxplot() +
-    geom_signif_lmm(data_df = data_df, response = "response", condition = "condition", latent_vars = "Patient", comparisons = comps, steps_increase = c(0, 0.1, 0.1))
-}
 }

@@ -2,9 +2,9 @@
 % Please edit documentation in R/stats.R
 \name{LMM_test}
 \alias{LMM_test}
-\title{Perform a nested t-test using LMMs.}
+\title{perform a nested t-test using LMMs.}
 \usage{
-LMM_test(data_df, response, condition, latent_vars)
+LMM_test(data_df, response, condition, latent_vars, verbose = TRUE)
 }
 \arguments{
 \item{data_df}{data frame containing data}
@@ -14,10 +14,12 @@ LMM_test(data_df, response, condition, latent_vars)
 \item{condition}{name of column in data_df that corresponds to condition of interest}
 
 \item{latent_vars}{vector containing columns in data_df that correspond to variables that describe the nested structure of the data e.g. Patient}
+
+\item{vebose}{(default=TRUE)}
 }
 \value{
 p-value derived from likelihood ratio test of model incorporating condition vs null model
 }
 \description{
-Perform a nested t-test using LMMs.
+perform a nested t-test using LMMs.
 }
