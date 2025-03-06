@@ -31,6 +31,25 @@ generate_logfile_name <- function(logfile_name = NULL) {
     }
 }
 
+#' @title params_ls_to_df
+#' @description Convert list of parameters to dataframe
+#' @param params_list list of parameters
+#' @return dataframe of parameters (2 columns)
+#' @importFrom dplyr %>%
+params_ls_to_df <- function(params_list) {
+    return(
+        data.frame(lapply(params_list, function(param) {
+            if (is.null(param)) {
+                return("NULL")
+            }
+            return(param)
+        })) %>%
+            t() %>%
+            data.frame() %>%
+            dplyr::rename(value = colnames(.))
+    )
+}
+
 #' Setup default argparser
 #'
 #' Set up a default argument parser, with two default arguments: log_level and output_dir
