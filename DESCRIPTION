@@ -1,6 +1,6 @@
 Package: GaitiLabUtils
 Title: General (utility) functions for R-projects. 
-Version: 1.5.0
+Version: 1.6.0
 Authors@R: c(
     person(
         given = "Joan", 
@@ -48,7 +48,8 @@ Imports:
     ggsignif,
     lme4,
     R.utils,
-    lifecycle
+    lifecycle, 
+    pacman
 biocViews: ComplexHeatmap
 Config/renv/profiles/dev: 
     httpgd,
