@@ -5,13 +5,19 @@
 \title{params_ls_to_df}
 \usage{
 params_ls_to_df(params_list)
+
+params_ls_to_df(params_list)
 }
 \arguments{
 \item{params_list}{list of parameters}
 }
 \value{
 dataframe of parameters (2 columns)
+
+dataframe of parameters (2 columns)
 }
 \description{
+Convert list of parameters to dataframe
+
 Convert list of parameters to dataframe
 }
