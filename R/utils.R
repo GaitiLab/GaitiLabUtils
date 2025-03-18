@@ -50,6 +50,7 @@ generate_pairs <- function(
 #' @param sheet_name the name of the sheet in the Excel file containing the color palette(s) (default='color_palettes')
 #' @return named list with the colors (<name>_color) and names as <name>
 #' @importFrom dplyr %>%
+#' @export
 get_color_palette <- function(name, excel_filepath, sheet_name = "color_palettes") {
     cols <- c(name, paste(name, "color", sep = "_"))
     color_palette <- readxl::read_excel(
