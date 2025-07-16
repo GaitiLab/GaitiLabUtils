@@ -1,11 +1,3 @@
-#' @title Autocrop plot
-#' @description Crop plot to remove white space
-#' @param filename filename
-#' @return NA
-#' @export
-auto_crop <- function(filename) {
-    knitr::plot_crop(filename)
-}
 #' geom signif with lmm test. See geom_signif from ggsignif for more information
 #'
 #' @param data_df data frame containing data
@@ -22,8 +14,18 @@ auto_crop <- function(filename) {
 #' @return geom signif
 #' @export
 geom_signif_lmm <- function(
-    data_df, response, condition, latent_vars, method = "nested_t_test",
-    comparisons = NULL, y_position = NULL, tip_length = 0.03, size = 0.5, step_increase = 0, verbose = TRUE) {
+    data_df,
+    response,
+    condition,
+    latent_vars,
+    method = "nested_t_test",
+    comparisons = NULL,
+    y_position = NULL,
+    tip_length = 0.03,
+    size = 0.5,
+    step_increase = 0,
+    verbose = TRUE
+) {
     if (!method %in% c("nested_t_test", "mixed_effects_anova")) {
         stop("Method needs to be nested_t_test or mixed_effects_anova")
     }
@@ -31,10 +33,14 @@ geom_signif_lmm <- function(
     if (method == "nested_t_test") {
         p_vals <- sapply(seq_along(comparisons), function(comp) {
             curr_comparison <- comparisons[[comp]]
-            curr_df <- data_df %>%
+            curr_df <- data_df |>
                 filter(!!dplyr::sym(condition) %in% curr_comparison)
 
-            pval <- format(LMM_test(curr_df, response, condition, latent_vars), scientific = TRUE, digits = 5)
+            pval <- format(
+                LMM_test(curr_df, response, condition, latent_vars),
+                scientific = TRUE,
+                digits = 5
+            )
             return(pval)
         })
 
@@ -58,14 +64,24 @@ geom_signif_lmm <- function(
             stop("X-axis variable needs to be factor")
         }
 
-        middle_category <- levels(data_df[[condition]])[ceiling(length(levels(data_df[[condition]])) / 2)]
+        middle_category <- levels(data_df[[condition]])[ceiling(
+            length(levels(data_df[[condition]])) / 2
+        )]
 
-        anova_pval <- format(LMM_test(data_df,
-            response, condition, latent_vars,
-            verbose = verbose
-        ), scientific = TRUE, digits = 5)
+        anova_pval <- format(
+            LMM_test(
+                data_df,
+                response,
+                condition,
+                latent_vars,
+                verbose = verbose
+            ),
+            scientific = TRUE,
+            digits = 5
+        )
         return(
-            ggplot2::annotate("text",
+            ggplot2::annotate(
+                "text",
                 x = middle_category,
                 y = Inf,
                 label = paste("ANOVA:", anova_pval),
