@@ -28,15 +28,19 @@ create_dir <- function(dir_path, verbose = TRUE) {
 #' @param collapse delimiter
 #' @export
 generate_pairs <- function(
-    v, collapse = "__",
-    remove_self = TRUE, return_undirected = TRUE) {
+    v,
+    collapse = "__",
+    remove_self = TRUE,
+    return_undirected = TRUE
+) {
     pairs <- expand.grid(v, v)
     if (remove_self) {
         pairs <- pairs[pairs[, 1] != pairs[, 2], ]
     }
     if (return_undirected) {
         return(unique(apply(
-            pairs, 1,
+            pairs,
+            1,
             function(x) paste0(sort(x), collapse = collapse)
         )))
     } else {
