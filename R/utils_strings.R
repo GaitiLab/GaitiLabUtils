@@ -2,7 +2,7 @@
 #' @param filepath filepath
 #' @return name of file without extension
 #'
-#' @examples 
+#' @examples
 #' \dontrun{
 #' get_name("R/my_script.R") returns 'my_script'
 #' }

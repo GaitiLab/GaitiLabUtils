@@ -26,7 +26,8 @@ get_pcs <- function(
     change_of_variation_perc = 0.05,
     # Jackstraw
     n_dim = 30,
-    dim_filter = 5^(-15)) {
+    dim_filter = 5^(-15)
+) {
     if (method == "elbow") {
         # Determine percent of variation associated with each PC
         pct <- seurat_obj[[reduc]]@stdev / sum(seurat_obj[[reduc]]@stdev) * 100
@@ -39,9 +40,11 @@ get_pcs <- function(
         # Determine the difference between variation of PC and subsequent PC
         # Last point where change of % of variation is more than 0.05%
         diff_var <- (pct[seq(1, length(pct) - 1)] - pct[seq(2, length(pct))])
-        co2 <- sort(which(diff_var > change_of_variation_perc),
+        co2 <- sort(
+            which(diff_var > change_of_variation_perc),
             decreasing = TRUE
-        )[1] + 1
+        )[1] +
+            1
         return(min(c(co1, co2)))
     } else if (method == "jackstraw") {
         seurat_obj <- Seurat::JackStraw(seurat_obj, num.replicate = 100)
