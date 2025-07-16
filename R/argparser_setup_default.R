@@ -16,6 +16,7 @@ set_wd <- function() {
 #' @param params_list list of parameters
 #' @return dataframe of parameters (2 columns)
 #' @importFrom dplyr %>%
+#' @export
 params_ls_to_df <- function(params_list) {
     return(
         data.frame(lapply(params_list, function(param) {
