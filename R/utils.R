@@ -47,3 +47,35 @@ generate_pairs <- function(
         return(apply(pairs, 1, paste0, collapse = collapse))
     }
 }
+
+#' @title Check whether a path is valid
+#' @param path character string to be checked
+#' @param expected_type 'file' or 'dir'
+#' @param required_file_extension in case expected_type == "file", you can also check for a specific file extension (case insensitive)
+#' @return logical
+#' @export
+is_valid_path <- function(
+    path,
+    expected_type = c("file", "dir")[1],
+    required_file_extension = NULL
+) {
+    match.arg(expected_type, c("file", "dir"))
+    if (is.null(path) || !is.character(path) || is.na(path)) {
+        return(FALSE)
+    }
+
+    if (expected_type == "file") {
+        if (is.null(required_file_extension)) {
+            return(fs::file_exists(path))
+        } else {
+            return(
+                fs::file_exists(path) &&
+                    (stringr::str_to_lower(fs::path_ext(path)) ==
+                        stringr::str_to_lower(required_file_extension))
+            )
+        }
+    } else if (expected_type == "dir") {
+        return(fs::dir_exists(path))
+    }
+    return(FALSE)
+}
