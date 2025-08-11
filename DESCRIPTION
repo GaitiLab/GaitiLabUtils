@@ -68,5 +68,5 @@ Suggests:
     circlize
 Config/testthat/edition: 3
 Remotes:
-    cran/Matrix@1.6-5,
+    cran/Matrix@1.6-1.1,
     cran/MASS@7.3-60
